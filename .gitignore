@@ -14,3 +14,7 @@ wlogout/themes/**
 
 # wofi ignore files
 wofi/themes/**
+
+# yazi ignore files
+yazi/themes/**
+yazi/plugins/**
