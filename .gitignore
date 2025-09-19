@@ -1,0 +1,5 @@
+fish/functions/*
+fish/completions/*
+fish/conf.d/nvm.fish
+fish/conf.d/sponge.fish
+fish/fish_variables
