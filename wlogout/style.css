@@ -1,0 +1,61 @@
+/*            _                              _             */
+/* __      __| |  ___    __ _   ___   _   _ | |_           */
+/* \ \ /\ / /| | / _ \  / _` | / _ \ | | | || __|          */
+/*  \ V  V / | || (_) || (_| || (_) || |_| || |_           */
+/*   \_/\_/  |_| \___/  \__, | \___/  \__,_| \__|          */
+/*                       |___/                             */
+/*                                                         */
+/* banner ganerate by http://www.network-science.de/ascii/ */
+/* use font style standard                                 */
+/* theme colors https://github.com/catppuccin/wlogout      */
+
+* {
+	background-image: none;
+	box-shadow: none;
+}
+
+window {
+	background-color: rgba(36, 39, 58, 0.90);
+}
+
+button {
+	border-radius: 0;
+	border-color: #8aadf4;
+	text-decoration-color: #cad3f5;
+	color: #cad3f5;
+	background-color: #1e2030;
+	border-style: solid;
+	border-width: 1px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 25%;
+}
+
+button:focus, button:active, button:hover {
+	/* 20% Overlay 2, 80% mantle */
+	background-color: rgb(53, 57, 75);
+	outline-style: none;
+}
+
+#lock {
+  background-image: image(url("icons/catppuccin-macchiato/blue/lock.svg"));
+}
+#logout {
+  background-image: image(url("icons/catppuccin-macchiato/blue/logout.svg"));
+}
+
+#suspend {
+  background-image: image(url("icons/catppuccin-macchiato/blue/suspend.svg"));
+}
+
+#hibernate {
+  background-image: image(url("icons/catppuccin-macchiato/blue/hibernate.svg"));
+}
+
+#shutdown {
+  background-image: image(url("icons/catppuccin-macchiato/blue/shutdown.svg"));
+}
+
+#reboot {
+  background-image: image(url("icons/catppuccin-macchiato/blue/reboot.svg"));
+}
