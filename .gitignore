@@ -12,3 +12,5 @@ mako/themes/**
 wlogout/icons/**
 wlogout/themes/**
 
+# wofi ignore files
+wofi/themes/**
