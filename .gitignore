@@ -7,3 +7,8 @@ fish/fish_variables
 
 # mako ignore files
 mako/themes/**
+
+# wlogout ignore files
+wlogout/icons/**
+wlogout/themes/**
+
