@@ -1,5 +1,9 @@
+# fish ignore files
 fish/functions/*
 fish/completions/*
 fish/conf.d/nvm.fish
 fish/conf.d/sponge.fish
 fish/fish_variables
+
+# mako ignore files
+mako/themes/**
