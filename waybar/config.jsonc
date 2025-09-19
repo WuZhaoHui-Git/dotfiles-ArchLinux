@@ -1,0 +1,121 @@
+// __        __             _                  
+// \ \      / /__ _  _   _ | |__    __ _  _ __ 
+//  \ \ /\ / // _` || | | || '_ \  / _` || '__|
+//   \ V  V /| (_| || |_| || |_) || (_| || |   
+//    \_/\_/  \__,_| \__, ||_.__/  \__,_||_|   
+//                   |___/                     
+//
+// banner ganerate by http://www.network-science.de/ascii/ 
+// use font style standard
+//
+// 请查看文档
+// https://github.com/Alexays/Waybar/wiki/Configuration#config-file
+[
+	{
+		// General Settings
+		// top：显示在窗口前，bottom：显示在窗口后
+		"layer": "top",
+		// 指定显示的显示器
+		// "output": ["eDP-1"],
+		// 显示位置（支持top,bottom,left,right）
+		// "position": "top",
+		// 显示高度
+		// "height": 20,
+		// 显示宽度
+		// "width": 20,
+		// 外边距（遵循上、右、下、左方向写法）
+		"margin": "0 0 0 0",
+		// 上外边距
+		// "margin-top": 0,
+		// 下外边距
+		// "margin-bottom": 0,
+		// 左外边距
+		// "margin-left": 0,
+		// 右外边距
+		// "margin-right": 0,
+		// 模块内间距
+		"spacing": 0,
+		// 设置class属性用于区分多实例
+		"name": "main",
+		// 停靠模式（dock：停靠, hide 隐藏, invisible 不可见, overlay 覆盖）
+		// 注意：除sway ipc之外，不可见、覆盖模式可能不兼容
+		"mode": "dock",
+		// 可隐藏启动
+		// "start_hidden": true,
+		// 定义修饰键重置条形可见性的计时（press, release）
+		// modifier-reset: "press",
+		// 从合成器请求独占区域，禁用此功能以允许在栏下方或顶部绘制应用程序窗口。
+		// overlay mode覆盖停靠模式默认禁用
+		// "exclusive": false,
+		// modules-center模块优先固定中心
+		// 在其他模块过长时，可以被推走以偏离中心
+		// "fixed-center": false,
+		// 将任何指针事件传递到栏下方窗口
+		// overlay mode覆盖停靠模式默认启用
+		// "passthrough": true,
+		// 订阅 Sway IPC 栏配置和可见性事件，以及通过swaymsg bar命令控制waybar
+		// "ipc": true,
+		// 配合swaymsg bar -b '$id'命令通过Sway IPC控制指定wayber
+		// "id": "waybar",
+		// auto reload css
+		"reload_style_on_change": true,
+		// Load Modules
+		"include": [
+			"~/.config/waybar/modules/modules.jsonc",
+			"~/.config/waybar/modules/custom/distro.jsonc",
+			"~/.config/waybar/modules/custom/dividers.jsonc",
+			"~/.config/waybar/modules/custom/power.jsonc",
+			// 在同一个文件夹通配符导入多个group文件后，只使用了第一个group配置
+			// 手动iclude指定文件后，问题解决
+			// "~/.config/waybar/modules/group/*.jsonc",
+			"~/.config/waybar/modules/group/network-bluetooth.jsonc",
+			"~/.config/waybar/modules/group/power.jsonc",
+			"~/.config/waybar/modules/group/power-plan.jsonc",
+			"~/.config/waybar/modules/group/theme-switcher.jsonc",
+			"~/.config/waybar/modules/group/wireplumber.jsonc"
+		],
+		"modules-left": [
+			"group/theme_swicher",
+			// "custom/left_right_inv#1",
+			"custom/left_right_div#1",
+			"hyprland/workspaces",
+			"custom/left_right_div#2",
+			// "hyprland/window"
+			"mpris"
+			// "custom/left_right_div#3",
+			// "custom/left_right_div#4",
+		],
+		"modules-center": [
+			// "custom/center_left_div#1",
+			// "custom/center_left_div#2",
+			"custom/center_left_div#3",
+			"cpu",
+			"memory",
+			"custom/center_left_div#4",
+			// "custom/center_left_inv#1",
+			"custom/center_left_div#5",
+			"custom/distro",
+			"custom/center_right_div#1",
+			// "custom/center_right_inv#1",
+			"custom/center_right_div#2",
+			"clock",
+			"custom/center_right_div#3"
+			// "custom/center_right_div#4",
+			// "custom/center_right_div#5"
+		],
+		"modules-right": [
+			// "custom/right_left_div#1",
+			// "mpris",
+			"custom/right_left_div#2",
+			"network",
+			"group/wireplumber",
+			"group/power-plan",
+			// "group/network-bluetooth",
+			"custom/right_left_div#3",
+			"tray",
+			"custom/right_left_div#4",
+			// "custom/right_left_inv#1",
+			"group/power"
+		]
+	}
+]

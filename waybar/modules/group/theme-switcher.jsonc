@@ -1,0 +1,125 @@
+{
+	"group/theme_swicher": {
+		// 设置组方向，可设置类型："horizontal"（水平方向）,"vertical"（垂直方向）,"inherit"（内联方向）, "orthogonal"（正交方向）
+		"orientation": "inherit",
+		// 模块组
+		"modules": [
+			"custom/theme-swicher",
+			"custom/user"
+		],
+		// 抽屉设置，不配置模块组则不隐藏其他模块
+		"drawer": {
+			// 渲染动画使用时间，单位毫秒
+			"transition-duration": 500,
+			// 渲染顺序，true：从左到右，false：从右到左
+			// 垂直方向时，true：从上到下，false：从下到上
+			"transition-left-to-right": true,
+			// 抽屉内元素class属性，不包含模块组第一个模块
+			"children-class": "drawer-child",
+			// 允许通过点击显示隐藏的模块
+			"click-to-reveal": false
+		}
+	},
+	"custom/theme-swicher": {
+		// 自定义模块需要执行的方法
+		"exec": "~/.config/waybar/scripts/theme-switcher.sh",
+		// 执行方法前判断，用于是否执行exec内命令
+		// "exec-if": "",
+		// 模块事件如点击、滚动，触发exec命令
+		// "exec-on-event": true,
+		// 命令返回数据为空时，禁用此自定义模块。但模块可显示静态数据
+		// "hide-empty-text": false,
+		// 返回数据类型（非json时可注释），
+		// 示例json返回数据{"alt":"$alt","class":"$class","percentage":"$percentage","text":"$text","tooltip":"$tooltip"}
+		"return-type": "json",
+		// 轮询命令的时间间隔，使用once时只执行一次exec命令
+		// "interval": "once",
+		// 重新执行命令的时间间隔，与interval冲突，不能同时设置
+		// "restart-interval": 60,
+		// "signal": 60,
+		// 格式化，当前自定义模块命令执行信息
+		"format": "{}",
+		// 格式化，当前自定义模块命令执行信息
+		// 格式化，当前自定义模块命令执行返回json中的百分比（percentage）信息选择图标，顺序从低到高
+		// "format-icons": [],
+		// 格式化，当前自定义模块命令执行返回json中的字符串（alt）信息选择图标
+		// "format-icons": {},
+		// 格式化，当前自定义模块命令执行数据进行粘贴
+		// "format-icons": "",
+		// 模块应显示的最小长度（以字符为单位）。
+		"min-length": 2,
+		// 模块应显示的最大长度（以字符为单位）。
+		"max-length": 4,
+		// 文本旋转度
+		// "rotate": 0,
+		// 鼠标左键点击
+		"on-click": "~/.config/waybar/scripts/theme-switcher.sh next",
+		// 鼠标滚轮点击
+		// "on-click-middle": "",
+		// 鼠标右键点击
+		"on-click-right": "~/.config/waybar/scripts/theme-switcher.sh prev",
+		// 鼠标滚轮向上滚动
+		// "on-scroll-up": "",
+		// 鼠标滚轮向下滚动
+		// "on-scroll-down":  "",
+		// 滚动时要使用的阈值。
+		// "smooth-scrolling-threshold": "",
+		// 悬停时显示提示
+		"tooltip": false,
+		// 悬停时显示提示的文本
+		// "tooltip-format": "",
+		// 启用脚本输出转义
+		"escape": false
+	},
+	"custom/user": {
+		// 自定义模块需要执行的方法
+		"exec": "id --user --name",
+		// 执行方法前判断，用于是否执行exec内命令
+		// "exec-if": "",
+		// 模块事件如点击、滚动，触发exec命令
+		// "exec-on-event": true,
+		// 命令返回数据为空时，禁用此自定义模块。但模块可显示静态数据
+		// "hide-empty-text": false,
+		// 返回数据类型（非json时可注释），
+		// 示例json返回数据{"alt":"$alt","class":"$class","percentage":"$percentage","text":"$text","tooltip":"$tooltip"}
+		// "return-type": "json",
+		// 轮询命令的时间间隔，使用once时只执行一次exec命令
+		// "interval": "once",
+		// 重新执行命令的时间间隔，与interval冲突，不能同时设置
+		// "restart-interval": 60,
+		// "signal": 60,
+		// 格式化，当前自定义模块命令执行信息
+		"format": "{}",
+		// 格式化，当前自定义模块命令执行信息
+		// 格式化，当前自定义模块命令执行返回json中的百分比（percentage）信息选择图标，顺序从低到高
+		// "format-icons": [],
+		// 格式化，当前自定义模块命令执行返回json中的字符串（alt）信息选择图标
+		// "format-icons": {},
+		// 格式化，当前自定义模块命令执行数据进行粘贴
+		// "format-icons": "",
+		// 模块应显示的最小长度（以字符为单位）。
+		// "min-length": 7,
+		// 模块应显示的最大长度（以字符为单位）。
+		// "max-length": 7,
+		// 文本旋转度
+		// "rotate": 0,
+		// 鼠标左键点击
+		// "on-click": "",
+		// 鼠标滚轮点击
+		// "on-click-middle": "",
+		// 鼠标右键点击
+		// "on-click-right": "",
+		// 鼠标滚轮向上滚动
+		// "on-scroll-up": "",
+		// 鼠标滚轮向下滚动
+		// "on-scroll-down":  "",
+		// 滚动时要使用的阈值。
+		// "smooth-scrolling-threshold": "",
+		// 悬停时显示提示
+		"tooltip": false,
+		// 悬停时显示提示的文本
+		// "tooltip-format": "",
+		// 启用脚本输出转义
+		"escape": false
+	}
+}

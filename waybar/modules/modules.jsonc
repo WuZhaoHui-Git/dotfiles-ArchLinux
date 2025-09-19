@@ -1,0 +1,706 @@
+// 请查看文档
+// https://github.com/Alexays/Waybar/wiki/Configuration#module-config
+{
+	// 屏幕亮度状态
+	"backlight": {
+		// 轮询信息的时间间隔
+		// "interval": 2,
+		// 格式化，屏幕亮度百分比信息显示
+		"format": "{icon}",
+		// "format": "{icon} {percent}%",
+		// 根据当前屏幕亮度亮度百分比，选择相应的图标，顺序从低到高
+		"format-icons": ["", "", "", "", "", "", "", "", ""],
+		// 模块应显示的最小长度（以字符为单位）。
+		"min-length": 2,
+		// 模块应显示的最大长度（以字符为单位）。
+		"max-length": 7,
+		// 文本旋转度
+		// "rotate": 0,
+		// 鼠标左键点击
+		// "on-click": "",
+		// 鼠标滚轮点击
+		// "on-click-middle": "",
+		// 鼠标右键点击
+		// "on-click-right": "",
+		// 鼠标滚轮向上滚动
+		// "on-scroll-up": "brightnessctl -n set 1%+",
+		"on-scroll-up": "~/.config/waybar/scripts/backlight.sh up 2",
+		// 鼠标滚轮向下滚动
+		// "on-scroll-down": "brightnessctl -n set 1%-",
+		"on-scroll-down": "~/.config/waybar/scripts/backlight.sh down 2",
+		// 滚动时更改亮度的速度。
+		"scroll-step": 2,
+		// 悬停时显示提示
+		"tooltip": true,
+		// 悬停时显示提示的文本
+		"tooltip-format": "滚动鼠标滚轮以调整亮度\n当前屏幕亮度：{percent}%"
+	},
+	// 电池状态
+	"battery": {
+		// 要监控的电池，如/sys/class/power_supply/内选择，而不是自动检测
+		// "bat": BAT2,
+		// 要监控的适配器，如/sys/class/power_supply/内选择，而不是自动检测
+		// "adapter": BAT2,
+		// 启用使用设计容量而不是实际最大容量的选项。因此，即使充满，电池也可能低于 100%。
+		// "design-capacity": false,
+		// 定义电池的最大百分比，对旧电池有用
+		// "full-at": 100,
+		// 轮询信息的时间间隔
+		"interval": 20,
+		// 格式化，电池余量百分比信息
+		"format": "{icon}",
+		// "format": "{icon} {capacity}%",
+		// 格式化，电池预计可使用时间
+		"format-time": "{H} hr {M} min",
+		// 根据当前电池余量百分比，选择相应的图标，顺序从低到高
+		"format-icons": [
+			"󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
+			// " ", " ", " ", " ", " "
+		],
+		// 格式化，电池充电百分比信息
+		"format-charging": "",
+		// "format-charging": " {capacity}%",
+		// 低电量状态定义，用来处理特殊的电量事件
+		"states": {
+			// 电池使用剩下30%容量
+			"warning": 30,
+			// 电池使用剩下10%容量
+			"critical": 10
+		},
+		// 模块应显示的最小长度（以字符为单位）。
+		"min-length": 2,
+		// 模块应显示的最大长度（以字符为单位）。
+		"max-length": 7,
+		// 文本旋转度
+		// "rotate": 0,
+		// 鼠标左键点击
+		// "on-click": "",
+		// 鼠标滚轮点击
+		// "on-click-middle": "",
+		// 鼠标右键点击
+		// "on-click-right": "",
+		// 鼠标滚轮向上滚动
+		// "on-scroll-up": "",
+		// 鼠标滚轮向下滚动
+		// "on-scroll-down":  "",
+		// 滚动时要使用的阈值。
+		// "smooth-scrolling-threshold": "",
+		// 悬停时显示提示
+		// "tooltip": true,
+		// 悬停时显示提示的文本
+		"tooltip-format": "电池剩余可用时间：{time}\n当前剩余电量：{capacity}%",
+		// 悬停时显示充电提示的文本
+		"tooltip-format-charging": "电池预计充电需要时间: {time}\n当前电量：{capacity}%",
+		// 对于具有多个电池的设备，可以选择将百分比显示为按电池大小加权的平均值，而不是其百分比级别的简单平均值
+		// "weighted-average": false,
+		// 如果未检测到电池兼容性，则可选择启用电池兼容性。
+		// "bat-compatibility": false,
+		// 电池电量百分比事件
+		"events": {
+			"on-discharging-warning": "notify-send '低电量提示: 已不足30%电量' -t 5000",
+			"on-discharging-critical": "notify-send '低电量提示: 已不足10%电量' -u critical -t 5000",
+			"on-charging-100": "notify-send '电池已充满' -t 5000"
+		}
+	},
+	// 蓝牙状态
+	"bluetooth": {
+		// 使用配置的蓝牙连接，否则，将随机使用可用蓝牙适配器。建议有多个蓝牙适配器时配置默认连接外设的蓝牙（基本没有人一台有多个可连接蓝牙适配器）。
+		// "controller": "",
+		// "format-device-preference": ,
+		// 格式化，蓝牙状态
+		"format": "󰂯",
+		// 格式化，蓝牙不可用状态
+		"format-disabled": "󰂲",
+		// 格式化，蓝牙禁用状态
+		"format-off": "󰂲",
+		// 格式化，蓝牙启用状态
+		"format-on": "󰂰",
+		// 格式化，蓝牙已连接最后一台设备状态
+		"format-connected": "󰂱",
+		// 格式化，已连接蓝牙电池信息
+		// "format-connected-battery": "",
+		// 格式化，无可用蓝牙适配器信息
+		// "format-no-controller": "",
+		// 模块应显示的最小长度（以字符为单位）。
+		"min-length": 2,
+		// 模块应显示的最大长度（以字符为单位）。
+		"max-length": 2,
+		// 文本旋转度
+		// "rotate": ,
+		// 鼠标左键点击
+		"on-click": "bluetoothctl power on && notify-send '蓝牙已启用'",
+		// 鼠标左键双击
+		"on-double-click": "blueman-manager",
+		// "on-double-click": "kitty ~/.config/waybar/scripts/bluetooth.sh",
+		// 鼠标滚轮点击
+		// "on-click-middle": "",
+		// 鼠标右键点击
+		// "on-click-right": "",
+		"on-click-right": "bluetoothctl power off && notify-send '蓝牙已禁用' -r 1925",
+		// 鼠标滚轮向上滚动
+		// "on-scroll-up": "",
+		// 鼠标滚轮向下滚动
+		// "on-scroll-down":  "",
+		// 滚动时要使用的阈值。
+		// "smooth-scrolling-threshold": "",
+		// 悬停时显示提示
+		// "tooltip": true,
+		"tooltip-format": "蓝牙设备地址: {device_address}",
+		"tooltip-format-disabled": "蓝牙不可用",
+		"tooltip-format-off": "蓝牙已关闭",
+		"tooltip-format-on": "蓝牙已开启",
+		"tooltip-format-connected": "蓝牙最近连接设备名称: {device_alias}",
+		"tooltip-format-enumerate-connected": "{device_alias}",
+		"tooltip-format-connected-battery": "{device_alias} 电量: {device_battery_percentage}%",
+		"tooltip-format-enumerate-connected-battery": "{device_alias} 电量: {device_battery_percentage}%"
+	},
+	// cpu状态
+	"cpu": {
+		// 轮询信息的时间间隔
+		"interval": 5,
+		// 格式化，CPU利用率百分比信息
+		"format": "󰍛 {usage}%",
+		// 格式化，CPU利用率警告百分比信息
+		"format-warning": "󰀨 {usage}%",
+		// 格式化，CPU利用率警告百分比信息
+		"format-critical": "󰀨 {usage}%",
+		"states": {
+			// CPU使用率达到75%状态
+			"warning": 75,
+			// CPU使用率达到90%状态
+			"critical": 90
+		},
+		// 模块应显示的最小长度（以字符为单位）。
+		"min-length": 7,
+		// 模块应显示的最大长度（以字符为单位）。
+		"max-length": 7,
+		// 文本旋转度
+		// "rotate": 0,
+		// 鼠标左键点击
+		"on-click": "kitty -T htop sh -c 'htop -s PERCENT_CPU'",
+		// 鼠标滚轮点击
+		// "on-click-middle": "",
+		// 鼠标右键点击
+		// "on-click-right": "",
+		// 鼠标滚轮向上滚动
+		// "on-scroll-up": "",
+		// 鼠标滚轮向下滚动
+		// "on-scroll-down":  "",
+		// 滚动时要使用的阈值。
+		// "smooth-scrolling-threshold": "",
+		// 悬停时显示提示
+		// "tooltip": false,
+		// 悬停时显示提示的文本
+		"tooltip-format": "平均睿频：{avg_frequency}GHz\n最小睿频：{min_frequency}\n最大睿频{max_frequency}"
+	},
+	// cava（跨平台条形音乐音谱条可视化工具）
+	// "cava": {},
+	// 时间状态
+	"clock": {
+		// 轮询信息的时间间隔
+		"interval": 60,
+		// 格式化，时间信息
+		"format": "{:%m月%d日 %H:%M}",
+		// 时区
+		// "timezone": "",
+		// 多时区配置，与时区timezone冲突
+		// "timezone": [""],
+		// 自定义时区显示的语言
+		// "locate": "",
+		// 文本旋转度
+		// "rotate": 0,
+		// 鼠标左键点击
+		// "on-click": "",
+		// 鼠标滚轮点击
+		// "on-click-middle": "",
+		// 鼠标右键点击
+		// "on-click-right": "",
+		// 鼠标滚轮向上滚动
+		// "on-scroll-up": "",
+		// 鼠标滚轮向下滚动
+		// "on-scroll-down":  "",
+		// 滚动时要使用的阈值。
+		// "smooth-scrolling-threshold": "",
+		// 悬停时显示提示
+		// "tooltip": false,
+		// 悬停时显示提示的文本
+		"tooltip-format": "<span size='9pt' font='WenQuanYi Zen Hei Mono'>{calendar}</span>",
+		"calendar": {
+			"mode": "year",
+			"mode-mon-col": 3,
+			"weeks-pos": "right",
+			"on-scroll": 1,
+			// "on-click-right": "mode",
+			"format": {
+				"months": "<span color='#ffead3'><b>{}</b></span>",
+				"days": "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+				"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+    		}
+		},
+		"actions": {
+			// "on-click-right": "mode",
+			"on-click-forward": "tz_up",
+			"on-click-backward": "tz_down",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		}
+	},
+	// hyprland聚焦窗口状态
+	"hyprland/windows": {
+		// 格式化，聚焦窗口状态信息
+		"format": "{}",
+		"rewrite": {
+			"^$": "Desktop",
+			"^kitty$": "Terminal",
+			"^zsh$": "Terminal",
+			"^~$": "Terminal"
+		},
+		// 显示waybar所属显示器的活动窗口信息，而不是聚焦窗口信息。
+		"separate-outputs": true,
+		// 是否隐藏窗口图标
+		// "icon": false,
+		// 窗口图标大小
+		"icon-size": 24
+	},
+	// hypland当前工作区窗口数量状态
+	"hyprland/windowcount": {
+		// 格式化。当前工作区窗口数量状态信息
+		"format": "[{}]",
+		// 格式化。当前工作区无窗口状态信息
+		"format-empty": "[X]",
+		// 格式化。当前工作区窗口无全屏窗口状态信息
+		"format-windowed": "[T]",
+		// 格式化。当前工作区窗口全屏窗口状态信息
+		// "format-fullscreen": "[{}]",
+		// 显示waybar所属显示器的活动窗口信息，而不是聚焦工作区信息。
+		"separate-outputs": true
+	},
+	// hypland工作区状态
+	"hyprland/workspaces": {
+		// 只显示活动工作区，除非是可见的、持久化的、特殊的活动区，否则显示所有工作区
+		// "active-only": false,
+		// 隐藏活动工作区，除非是持久化的、特殊的活动区
+		// "hide-active": false,
+		// 显示所有工作区，否则只显示有分配的活动区
+		// "all-outputs": false,
+		// 格式化，工作区状态信息
+		"format": "{icon}",
+		"format-icons": {
+			// 活动工作区状态图标
+			"active": "",
+			// 默认工作区状态图标（如果其他工作区状态未设定，使用此图标）
+			"default": "",
+      // "1": "1",
+      // "2": "2",
+      // "3": "3",
+      // "4": "4",
+      // "5": "5",
+      // "6": "6",
+      // "7": "7",
+      // "8": "8",
+      // "9": "9"
+			// 活动空工作区状态图标
+			// "empty": "",
+			// 未活动持久工作区状态图标
+			// "persistent": "",
+			// 未活动特殊工作区状态图标
+			// "special": "",
+			// 未活动紧急工作区状态同步
+			// "urgent": ""
+		},
+		// 始终显示的工作区（即使工作区不存在）
+		"persistent-workspaces": {
+			// 每个显示器始终显示工作区数量
+			"*": 5
+			// 指定显示器显示数量
+			// "HDMI-A-1": 3
+			// 指定工作区显示在指定工作区显示
+			// "1": ["HDMI-A-1"],
+			// "2": ["eDP-1"]
+			// 指定显示器显示指定工作区
+			// "HDMI-A-1": [1, 2, 3, 4, 5, 6]
+			// "eDP-1": [7, 8, 9]
+		},
+		// 工作区任务栏（0.14之后支持）
+		// "workspace-taskbar": {
+	    //     // Enable the workspace taskbar. Default: false
+	    //     "enable": true,
+	    //     // If true, the active/focused window will have an 'active' class. Could cause higher CPU usage due to more frequent redraws. Default: false
+	    //     "update-active-window": true,
+	    //     // Format of the windows in the taskbar. Default: "{icon}". Allowed variables: {icon}, {title}
+	    //     "format": "{icon} {title:.20}",
+	    //     // Icon size in pixels. Default: 16
+	    //     "icon-size": 16,
+	    //     // Either the name of an installed icon theme or an array of themes (ordered by priority). If not set, the default icon theme is used.
+	    //     "icon-theme": "some_icon_theme",
+	    //     // Orientation of the taskbar ("horizontal" or "vertical"). Default: "horizontal".
+	    //     "orientation": "horizontal",
+	    //     // List of regexes. A window will NOT be shown if its window class or title match one or more items. Default: []
+	    //     "ignore-list": [ "code", "Firefox - .*" ],
+	    //     // Command to run when a window is clicked. Default: "" (switch to the workspace as usual). Allowed variables: {address}, {button}
+	    //     "on-click-window": "/some/arbitrary/script {address} {button}"
+	    // }
+		// 只显示持久化工作区
+		// "persistent-only": true,
+		// 显示特殊工作区在普通工作区旁边
+		// "show-special": true,
+		// 显示可见特殊工作区，当show-special为true和当前设置为true
+		// "special-visible-only": true,
+		// 工作区排序，可选"default"（Hyprland排序）,"id","name","number","special-centered"（默认排序，特殊工作区位于中心）
+		// "sort-by": "number",
+		// 工作区任务栏重写图标、标题，正则匹配模式
+		// "window-rewrite": {
+		// // Windows whose titles contain "youtube"
+		// 	"title<.*youtube.*>": "",
+		// // Windows whose classes are "firefox"
+		// 	"class<firefox>": "",
+		// // Windows whose class is "firefox" and title contains "github". Note that "class" always comes first.
+		// 	"class<firefox> title<.*github.*>": "",
+		// // Windows that contain "foot" in either class or title. For optimization reasons, it will only match against a title if at least one other window explicitly matches against a title.
+		// 	"foot": "",
+		// 	"code": "󰨞",
+		// }
+		// 工作区任务栏重写图标、标题，如果在window-rewrite中没有设置或匹配，默认用此
+		// "window-rewrite-default": "",
+		// 工作区任务栏应用图标、标题间隔符号
+		// "format-window-separator": " ",
+		// 点击后在当前屏幕打开选择的工作区，否则将在原来显示器上打开工作区
+		// "move-to-monitor": true,
+		// 忽略指定工作区（支持正则表达式），不显示在当前waybar中（多屏可考虑使用）
+		// "ignore-workspaces": [],
+		// 鼠标滚轮向上滚动
+		// "on-scroll-up": "",
+		// 鼠标滚轮向下滚动
+		// "on-scroll-down": "",
+		"cursor": true
+	},
+	// 演示模式状态（禁用屏幕低电量变暗，长时间不操作锁屏、休眠）
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "󰈈",
+			"deactivated": "󰈉"
+		},
+		// 模块应显示的最小长度（以字符为单位）。
+		"min-length": 2,
+		// 模块应显示的最大长度（以字符为单位）。
+		"max-length": 7,
+		// 文本旋转度
+		// "rotate": 0,
+		// 鼠标左键点击
+		// "on-click": "",
+		// 鼠标滚轮点击
+		// "on-click-middle": "",
+		// 鼠标右键点击
+		// "on-click-right": "",
+		// 鼠标滚轮向上滚动
+		// "on-scroll-up": "",
+		// 鼠标滚轮向下滚动
+		// "on-scroll-down":  "",
+		// 滚动时要使用的阈值。
+		// "smooth-scrolling-threshold": "",
+		// 悬停时显示提示
+		// "tooltip": false,
+		// 悬停时显示演示模式激活状态提示的文本
+		"tooltip-format-activated": "演示模式已启用",
+		// 悬停时显示演示模式关闭状态提示的文本
+		"tooltip-format-deactivated": "空闲模式已启用",
+		// waybar启动后默认激活演示模式
+		"start-activated": false
+		// 指定时间后关闭演示模式
+		// "timeout": 0
+	},
+	// 媒体播放器状态
+	"mpris": {
+		// 要附加到的 MPRIS 播放器的命令名称，使用默认值始终遵循当前活跃的媒体播放器
+		// "player": "playerctld",
+		// "ignored-players": "firefox",
+		// 轮询信息的时间间隔
+		// "interval": 60,
+		// 格式化，当前播放媒体信息
+		"format": "{player_icon} {title}-{artist}",
+		// 格式化，当前暂停播放媒体信息
+		"format-paused": "{status_icon} {title}-{artist}",
+		// 悬停时显示提示的默认文本
+		"tooltip-format": "{title}-{artist}",
+		// 悬停时显示提示的暂停文本
+		"tooltip-format-paused": "{title}-{artist}",
+		// "enable-tooltip-len-limits": false,
+		// 鼠标左键点击
+		// "on-click": "play-pause",
+		// 鼠标滚轮点击
+		// "on-click-middle": "previous track",
+		// 鼠标右键点击
+		// "on-click-right": "next track",
+		"player-icons": {
+			// "default": "󰐊",
+			"default": "",
+			"g4music": "",
+			"mpv": "",
+			"vlc": ""
+		},
+		"status-icons": {
+			// "playing": "󰐊",
+			// "paused": "󰏤",
+			// "stoped": ""
+			"playing": "",
+			"paused": "",
+			"stoped": ""
+		},
+		// "dynamic-order": ,
+		// "dynamic-len": ,
+		// "dynamic-separator": ,
+		// "dynamic-importance-order": ,
+		// "min-length": ,
+		"max-length": 20
+	},
+	// 内存状态
+	"memory": {
+		// 轮询信息的时间间隔
+		"interval": 5,
+		// 格式化，内存利用率百分比信息
+		"format": " {percentage}%",
+		// 格式化，内存利用率警告百分比信息
+		"format-warning": "󰀧 {percentage}%",
+		// 格式化，内存利用率警告百分比信息
+		"format-critical": "󰀧 {percentage}%",
+		"states": {
+			// 内存使用率达到75%状态
+			"warning": 75,
+			// 内存使用率达到90%状态
+			"critical": 90
+		},
+		// 模块应显示的最小长度（以字符为单位）。
+		"min-length": 7,
+		// 模块应显示的最大长度（以字符为单位）。
+		"max-length": 7,
+		// 文本旋转度
+		// "rotate": 0,
+		// 鼠标左键点击
+		"on-click": "kitty -T htop sh -c 'htop -s PERCENT_MEM'",
+		// 鼠标滚轮点击
+		// "on-click-middle": "",
+		// 鼠标右键点击
+		// "on-click-right": "",
+		// 鼠标滚轮向上滚动
+		// "on-scroll-up": "",
+		// 鼠标滚轮向下滚动
+		// "on-scroll-down":  "",
+		// 滚动时要使用的阈值。
+		// "smooth-scrolling-threshold": "",
+		// 悬停时显示提示
+		// "tooltip": false,
+		// 悬停时显示提示的文本
+		"tooltip-format": "内存使用: {used:0.1f} GB / {total:0.1f} GB\n交换分区使用: {swapUsed:0.1f}GB / {swapTotal}GB"
+	},
+	// 网络状态
+	"network": {
+		// 使用定义的接口而不是自动检测。支持通配符。
+		// "interface": "",
+		// 轮询信息的时间间隔
+		"interval": 3,
+		// "interval": 10,
+		// 选择{ipaddr}显示的信息（可选选项"ipv4", "ipv6", "ipv4_6"）
+		"family": "ipv4_6",
+		// 格式化，网络默认信息（如果其实特殊选项未配置默认用此）
+		"format": " {bandwidthUpBytes}  {bandwidthDownBytes}",
+		// "format": "󰤨",
+		// 格式化。网络使用以太网接口信息
+		"format-ethernet": " {bandwidthUpBytes}  {bandwidthDownBytes}",
+		// "format-ethernet": "󰈀",
+		// 格式化。网络使用无线网络接口信息
+		"format-wifi": " {bandwidthUpBytes}  {bandwidthDownBytes}",
+		// "format-wifi": "{icon}",
+		// 格式化，没有 IP 地址的链接接口信息
+		// "format-linked": "",
+		// 格式化，网络断开信息
+		"format-disconnected": "󰤯",
+		// 格式化，网络禁用信息
+		"format-disabled": "󰤮",
+		// 格式化，点击后使用的替换信息
+		// "format-alt": "",
+		"format-icons": [
+			"󰤟", "󰤢", "󰤥", "󰤨"
+		],
+		// 模块应显示的最小长度（以字符为单位）。
+		"min-length": 2,
+		// 模块应显示的最大长度（以字符为单位）。
+		"max-length": 30,
+		// 文本旋转度
+		// "rotate": 0,
+		// 鼠标左键点击
+		"on-click": "nmcli radio wifi on && notify-send 'Wi-Fi已启用' -r 1125",
+		// 鼠标左键双击
+		"on-double-click": "kitty nmtui",
+		// "on-double-click": "kitty ~/.config/waybar/scripts/network.sh",
+		// 鼠标滚轮点击
+		// "on-click-middle": "",
+		// 鼠标右键点击
+		"on-click-right": "nmcli radio wifi off && notify-send 'Wi-Fi已禁用' -r 1125",
+		// 鼠标滚轮向上滚动
+		// "on-scroll-up": "",
+		// 鼠标滚轮向下滚动
+		// "on-scroll-down":  "",
+		// 滚动时要使用的阈值。
+		// "smooth-scrolling-threshold": "",
+		// 悬停时显示提示
+		// "tooltip": false,
+		// 悬停时显示提示的文本
+		"tooltip-format": "网关: {gwaddr}",
+		"tooltip-format-ethernet": "网络适配器: {ifname}",
+		"tooltip-format-wifi": "连接网络: {essid}\nIP地址: {ipaddr}/{cidr}\n信号强度: {signalStrength}%\n网络频率: {frequency} GHz\n上传速度: {bandwidthUpBytes} 下载速度: {bandwidthDownBytes}",
+		"tooltip-format-disconnected": "Wi-Fi已断开",
+		"tooltip-format-disabled": "Wi-Fi已禁用"
+	},
+	// 电源计划（省电、均衡、性能）
+	"power-profiles-daemon": {
+		// 格式化，电源计划信息
+		"format": "{icon}",
+		// 模块应显示的最小长度（以字符为单位）。
+		"min-length": 2,
+		// 模块应显示的最大长度（以字符为单位）。
+		"max-length": 2,
+		// 悬停时显示提示
+		"tooltip": true,
+		// 悬停时显示提示的文本
+		"tooltip-format": "电源处于{profile}模式",
+		"format-icons": {
+			"default": "",
+			"performance": "",
+			"balanced": "",
+			"power-saver": ""
+		}
+	},
+	// 温度状态
+	"temperature": {
+		"thermal-zone": 1,
+		// "hwmon-path":
+		// "hwmon-path-abs":
+		// "input-filename":
+		"critical-threshold": 90,
+		"interval": 10,
+		"format-critical": "󰀦 {temperatureC}°C",
+		"format": "{icon} {temperatureC}°C",
+		"format-icons": [
+			"󱃃", "󰔏", "󱃂"
+		],
+		// 模块应显示的最小长度（以字符为单位）。
+		"min-length": 7,
+		// 模块应显示的最大长度（以字符为单位）。
+		"max-length": 7,
+		// 文本旋转度
+		// "rotate": 0,
+		// 鼠标左键点击
+		// "on-click": "",
+		// 鼠标滚轮点击
+		// "on-click-middle": "",
+		// 鼠标右键点击
+		// "on-click-right": "",
+		// 鼠标滚轮向上滚动
+		// "on-scroll-up": "",
+		// 鼠标滚轮向下滚动
+		// "on-scroll-down":  "",
+		// 滚动时要使用的阈值。
+		// "smooth-scrolling-threshold": "",
+		// 悬停时显示提示
+		// "tooltip": false,
+		// 悬停时显示提示的文本
+		"tooltip-format": "{temperatureF}°F"
+	},
+	// 任务托盘状态
+	"tray": {
+		// 系统托盘图标大小
+		"icon-size": 20,
+		// 系统托盘图标可见性过滤
+		"show-passive-items": true,
+		// 系统托盘图标间距
+		"spacing": 2
+	},
+	// 音频输入设备状态，如麦克风
+	"wireplumber#source": {
+		// 格式化，音频输入状态信息
+		"format": "󰍬",
+		// "format": "󰍬 {volume}%",
+		// 格式化，音频输入静音状态信息
+		"format-muted": "󰍭",
+		// "format-muted": "󰍭 {volume}%",
+		// 滚动偏移量，用以更改音量大小
+		"scroll-step": 2,
+		// 模块应显示的最小长度（以字符为单位）。
+		"min-length": 2,
+		// 模块应显示的最大长度（以字符为单位）。
+		"max-length": 7,
+		// 文本旋转度
+		// "rotate": 0,
+		// 鼠标左键点击
+		// "on-click": "~/.config/waybar/scripts/wireplumber.sh mic",
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+		// 鼠标滚轮点击
+		// "on-click-middle": "",
+		// 鼠标右键点击
+		"on-click-right": "pavucontrol -t 4",
+		// 鼠标滚轮向上滚动
+		"on-scroll-up": "~/.config/waybar/scripts/wireplumber.sh mic raise",
+		// 鼠标滚轮向下滚动
+		"on-scroll-down": "~/.config/waybar/scripts/wireplumber.sh mic lower",
+		// 滚动时要使用的阈值。
+		// "smooth-scrolling-threshold": "",
+		// 悬停时显示提示
+		// "tooltip": false,
+		// 悬停时显示提示的文本
+		"tooltip-format": "音频输入设备：{node_name}\n当前音量：{volume}%",
+		// 最大音量
+		// "max-volume": 100.0,
+		// 反转除鼠标设备滚动方向
+		// "reverse-scrolling": false,
+		// 反转鼠标设备滚动方向
+		// "reverse-mouse-scrolling": false,
+		"node-type": "Audio/Source"
+	},
+	// 音频输出设备状态，如扬声器、耳机、音响
+	"wireplumber#sink": {
+		// 格式化，音频输出状态信息
+		"format": "{icon}",
+		// "format": "{icon} {volume}%",
+		// 格式化，音频输出静音状态信息
+		"format-muted": "󰝟",
+		// "format-muted": "󰝟 {volume}%",
+		"format-icons": [
+			"󰕿", "󰖀", "󰕾"
+		],
+		// 滚动偏移量，用以更改音量大小
+		"scroll-step": 2,
+		// 模块应显示的最小长度（以字符为单位）。
+		"min-length": 2,
+		// 模块应显示的最大长度（以字符为单位）。
+		"max-length": 7,
+		// 文本旋转度
+		// "rotate": 0,
+		// 鼠标左键点击
+		// "on-click": "~/.config/waybar/scripts/wireplumber.sh out",
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		// 鼠标滚轮点击
+		// "on-click-middle": "",
+		// 鼠标右键点击
+		"on-click-right": "pavucontrol -t 3",
+		// 鼠标滚轮向上滚动
+		"on-scroll-up": "~/.config/waybar/scripts/wireplumber.sh out raise",
+		// 鼠标滚轮向下滚动
+		"on-scroll-down": "~/.config/waybar/scripts/wireplumber.sh out lower",
+		// 滚动时要使用的阈值。
+		// "smooth-scrolling-threshold": "",
+		// 悬停时显示提示
+		// "tooltip": false,
+		// 悬停时显示提示的文本
+		"tooltip-format": "音频输出设备:：{node_name}\n当前音量：{volume}%",
+		// 最大音量
+		// "max-volume": 100.0,
+		// 反转除鼠标设备滚动方向
+		// "reverse-scrolling": false,
+		// 反转鼠标设备滚动方向
+		// "reverse-mouse-scrolling": false,
+		"node-type": "Audio/Sink"
+	},
+}

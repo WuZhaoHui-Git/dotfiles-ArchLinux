@@ -1,0 +1,238 @@
+@import "theme.css";
+
+* {
+	font-family: "0xProto Nerd Font";
+	font-weight: bold;
+	font-size: 16px;
+	color: @main-fg;
+}
+
+/* modules-left */
+/* group as theme_switcher */
+#custom-theme-swicher {
+  margin-left: 10px;
+}
+#custom-user {
+	padding-right: 16px;
+	font-weight: normal;
+}
+#custom-left_right_inv.1 {
+	color: @left-right2;
+}
+#custom-left_right_div.1 {
+	color: @main-bg;
+  background-color: @left-right2;
+}
+/* hyprland workspaces */
+#workspaces {
+	background-color: @left-right2;
+	padding: 0 1px;
+}
+button {
+	border-radius: 16px;
+	padding: 0 10px;
+}
+button:hover {
+	background-color: @hover-bg;
+	color: @hover-fg;
+}
+button.active label {
+	font-size: 23px;
+	color: @accent;
+}
+/* hyprland window */
+#custom-left_right_div.2 {
+	color: @left-right2;
+}
+#window {
+	margin-left: 12px;
+}
+#window label {
+	font-weight: normal;
+}
+#windowcount {
+	margin-right: 12px;
+}
+#windowcount label {
+	color: @hover-fg;
+}
+#mpris {
+  margin-left: 10px;
+  background-color: @main-bg;
+	/* background-color: @right-left0; */
+}
+/* wait to used */
+#custom-left_right_div.3 {
+	color: @left-right1;
+}
+/* wait to used */
+#custom-left_right_div.4 {
+	color: @left-right0;
+}
+/* modules-center */
+/* wait to used */
+#custom-center_left_div.1 {
+	color: @center-left0;
+}
+#custom-center_left_div.2 {
+	color: @center-left;
+}
+#custom-center_left_div.3 {
+	color: @center-left2;
+}
+/* cpu, memory */
+#cpu {
+	background-color: @center-left2;
+}
+#memory {
+	background-color: @center-left2;
+}
+#custom-center_left_inv.1 {
+	color: @center-left2;
+}
+#custom-center_left_div.4 {
+	background-color: @center-left2;
+  color: @main-bg;
+}
+/* distro */
+#custom-center_left_div.5 {
+	color: @accent;
+}
+#custom-distro {
+	padding: 0 10px 0 5px;
+	font-size: 23px;
+	background-color: @accent;
+	color: @main-bg;
+}
+#custom-center_right_div.1 {
+	color: @accent;
+}
+#custom-center_right_inv.1 {
+	color: @center-right2;
+}
+#custom-center_right_div.2 {
+	color: @main-bg;
+	background-color: @center-right2;
+}
+/* clock */
+#clock {
+	background-color: @center-right2;
+}
+#custom-center_right_div.3 {
+	color: @center-right2;
+}
+/* wait to used */
+#custom-center_right_div.4 {
+	color: @center-right1;
+}
+#custom-center_right_div.5 {
+	color: @center-right0;
+}
+/* modules-right */
+/* mpris */
+#custom-right_left_div.1 {
+	color: @right-left0;
+}
+/* groups as wireplumber, network-bluetooth, power-plan */
+#custom-right_left_div.2 {
+	background-color: @main-bg;
+	/* background-color: @right-left0; */
+	color: @right-left1;
+}
+#wireplumber {
+	background-color: @right-left1;
+	padding: 0 0 0 2px;
+}
+#network {
+	background-color: @right-left1;
+	padding: 0 5px;
+}
+#network-bluetooth {
+	background-color: @right-left1;
+	padding: 0 5px;
+}
+#power-plan {
+	background-color: @right-left1;
+	padding: 0 6px 0 4px;
+}
+/* tray */
+#custom-right_left_div.3 {
+	background-color: @right-left1;
+	color: @right-left2;
+}
+#tray {
+	background-color: @right-left2;
+}
+/* power */
+#custom-right_left_div.4 {
+	background-color: @right-left2;
+	color: @main-bg;
+}
+#custom-right_left_inv.1 {
+	color: @right-left2;
+}
+#power {
+	border-radius: 16px;
+	padding: 0 10px 0 10px;
+	font-size: 20px;
+	color: @accent;
+}
+#power:hover {
+	background-color: @hover-bg;
+}
+
+/*---------------------
+	general styling
+---------------------*/
+
+#custom-theme_switcher:hover,
+#idle_inhibitor:hover,
+#clock.date:hover,
+#network:hover,
+#bluetooth:hover,
+#custom-system_update:hover,
+#mpris:hover,
+#wireplumber:hover {
+	color: @hover-fg;
+}
+
+.warning { color: @warning; }
+.critical { color: @critical; }
+.charging { color: @charging; }
+.muted { color: @hover-fg; }
+
+#custom-left_right_inv,
+#custom-left_right_div,
+#custom-center_left_div,
+#custom-center_left_inv,
+#custom-center_right_inv,
+#custom-center_right_div,
+#custom-right_left_div,
+#custom-right_left_inv {
+	font-size: 23.1px;
+}
+
+/* outline */
+window#waybar {
+	background-color: @shadow;
+}
+
+/* background */
+window#waybar > box {
+	margin: 4px;
+	background-color: @main-bg;
+}
+
+tooltip {
+	border: 2px solid @main-br;
+	border-radius: 10px;
+	background-color: @main-bg;
+}
+tooltip label {
+	margin: 2px 4px;
+	font-weight: normal;
+}
+tooltip decoration {
+	border: none;
+	background-color: transparent;
+}

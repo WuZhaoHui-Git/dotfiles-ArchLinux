@@ -1,0 +1,101 @@
+// 请查看文档
+// https://github.com/Alexays/Waybar/wiki/Module:-Custom#config
+{
+	/*-------------------
+		left dividers
+	-------------------*/
+
+	"custom/center_left_div#1": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/center_left_div#2": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/center_left_div#3": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/center_left_div#4": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/center_left_div#5": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right_left_div#1": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right_left_div#2": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right_left_div#3": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right_left_div#4": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right_left_div#5": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/center_left_inv#1": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right_left_inv#1": {
+		"format": "",
+		"tooltip": false
+	},
+
+	/*--------------------
+		right dividers
+	--------------------*/
+
+	"custom/left_right_div#1": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left_right_div#2": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left_right_div#3": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left_right_div#4": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/center_right_div#1": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/center_right_div#2": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/center_right_div#3": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/center_right_div#4": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left_right_inv#1": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/center_right_inv#1": {
+		"format": "",
+		"tooltip": false
+	},
+}
