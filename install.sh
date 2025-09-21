@@ -15,9 +15,10 @@ done
 
 for file in $script_dir/*; do
   # echo $file
-  if [ -d $file ]; then
-    ln -sf $file ~/.config
-  elif [[ -f $file && $file == *-flags.conf ]]; then
-    ln -sf $file ~/.config
-  fi
+  # if [ -d $file ]; then
+  #   ln -sf $file ~/.config
+  # elif [[ -f $file && $file == *-flags.conf ]]; then
+  #   ln -sf $file ~/.config
+  # fi
+	ln -sf $file ~/.config
 done
