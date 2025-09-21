@@ -4,28 +4,25 @@
 POSH=agnoster
 
 # -----------------------------------------------------
-# oh-myzsh themes: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# zinit plugin maneger
 # -----------------------------------------------------
-# ZSH_THEME=robbyrussell
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://gh-proxy.com/https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
-# -----------------------------------------------------
-# oh-myzsh plugins
-# -----------------------------------------------------
-plugins=(
-    git
-    sudo
-    web-search
-    archlinux
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    fast-syntax-highlighting
-    copyfile
-    copybuffer
-    dirhistory
-)
+zinit snippet https://gh-proxy.com/https://github.com/robbyrussell/oh-my-zsh/raw/master/plugins/git/git.plugin.zsh
+zinit snippet https://gh-proxy.com/https://github.com/robbyrussell/oh-my-zsh/raw/master/plugins/sudo/sudo.plugin.zsh
+zinit snippet https://gh-proxy.com/https://github.com/robbyrussell/oh-my-zsh/raw/master/plugins/web-search/web-search.plugin.zsh
+zinit snippet https://gh-proxy.com/https://github.com/robbyrussell/oh-my-zsh/raw/master/plugins/archlinux/archlinux.plugin.zsh
+zinit snippet https://gh-proxy.com/https://github.com/robbyrussell/oh-my-zsh/raw/master/plugins/copybuffer/copybuffer.plugin.zsh
+zinit snippet https://gh-proxy.com/https://github.com/robbyrussell/oh-my-zsh/raw/master/plugins/copyfile/copyfile.plugin.zsh
+zinit snippet https://gh-proxy.com/https://github.com/robbyrussell/oh-my-zsh/raw/master/plugins/copypath/copypath.plugin.zsh
+zinit snippet https://gh-proxy.com/https://github.com/robbyrussell/oh-my-zsh/raw/master/plugins/dirhistory/dirhistory.plugin.zsh
 
-# Set-up oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma-continuum/fast-syntax-highlighting
 
 # -----------------------------------------------------
 # Set-up FZF key bindings (CTRL R for fuzzy history finder)
@@ -45,4 +42,6 @@ setopt appendhistory
 # eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/EDM115-newline.omp.json)"
 
 # Shipped Theme
-eval "$(oh-my-posh init zsh --config /usr/share/oh-my-posh/themes/iterm2.omp.json)"
+# eval "$(oh-my-posh init zsh --config /usr/share/oh-my-posh/themes/iterm2.omp.json)"
+eval "$(starship init zsh)"
+
