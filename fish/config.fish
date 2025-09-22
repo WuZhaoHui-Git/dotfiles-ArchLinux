@@ -14,9 +14,9 @@ if status is-interactive # Commands to run in interactive sessions can go here
 	# Use starship
 	ln -sf ~/.config/starship/catppuccin-powerline.toml ~/.config/starship.toml
 	starship init fish | source
-	if test -f ~/.local/state/quickshell/user/generated/terminal/sequences.txt
-	    cat ~/.local/state/quickshell/user/generated/terminal/sequences.txt
-	end
+	# if test -f ~/.local/state/quickshell/user/generated/terminal/sequences.txt
+	#     cat ~/.local/state/quickshell/user/generated/terminal/sequences.txt
+	# end
 
 	# Use oh-my-posh
 	# oh-my-posh init fish --config /usr/share/oh-my-posh/themes/iterm2.omp.json | source
