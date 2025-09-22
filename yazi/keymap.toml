@@ -48,3 +48,8 @@ prepend_keymap = [
   { on = "<C-k>", run = "arrow -1", desc = "Move cursor up" },
   { on = "<C-j>", run = "arrow 1", desc = "Move cursor down" },
 ]
+
+[input]
+prepend_keymap = [
+	{ on = "<Esc>", run = "close", desc = "cancal input" },
+]
