@@ -49,9 +49,9 @@ return {
 
 			-- example calling setup directly for each LSP
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
-			local lspconfig = require("lspconfig")
 
-			lspconfig["lua_ls"].setup({ capabilities = capabilities })
+			vim.lsp.config("lua_ls", { capabilities = capabilities })
+			vim.lsp.config("qmlls", { capabilities = capabilities })
 
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer
@@ -231,12 +231,12 @@ return {
 			})
 
 			-- Insert status into lualine
-			-- opts = require("lualine").get_config()
-			-- table.insert(opts.winbar.lualine_b, 1, {
-			-- symbols.get,
-			-- cond = symbols.has,
-			-- })
-			-- require("lualine").setup(opts)
+			opts = require("lualine").get_config()
+			table.insert(opts.winbar.lualine_b, 1, {
+				symbols.get,
+				cond = symbols.has,
+			})
+			require("lualine").setup(opts)
 		end,
 	},
 }
