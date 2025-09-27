@@ -8,6 +8,9 @@ fish/fish_variables
 # mako ignore files
 mako/themes/**
 
+# nvim ignore files
+nvim/lazy-lock.json
+
 # wlogout ignore files
 wlogout/icons/**
 wlogout/themes/**
@@ -18,3 +21,6 @@ wofi/themes/**
 # yazi ignore files
 yazi/themes/**
 yazi/plugins/**
+
+# kvantum ignore files
+Kvantum/*/
