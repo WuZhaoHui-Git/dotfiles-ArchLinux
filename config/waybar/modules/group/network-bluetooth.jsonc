@@ -16,7 +16,7 @@
 			// 垂直方向时，true：从上到下，false：从下到上
 			"transition-left-to-right": false,
 			// 抽屉内元素class属性，不包含模块组第一个模块
-			"children-class": "drawer-network-bluetooth",
+			"children-class": "drawer-child",
 			// 允许通过点击显示隐藏的模块
 			"click-to-reveal": false
 		}

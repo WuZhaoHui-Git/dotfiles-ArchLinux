@@ -1,0 +1,167 @@
+@import "../themes/current/waybar.css";
+
+* {
+	font-family: "Jetbrains Mono Nerd Font";
+	font-weight: bold;
+	font-size: 16px;
+  color: @main-fg;
+
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+/* outline */
+window#waybar {
+	background-color: @shadow;
+}
+
+/* background */
+window#waybar > box {
+	margin: 4px;
+	background-color: @main-bg;
+}
+
+tooltip {
+	border: 2px solid @main-bd;
+	border-radius: 10px;
+	background-color: @main-bg;
+}
+
+tooltip label {
+	margin: 2px 4px;
+	font-weight: normal;
+}
+
+tooltip decoration {
+	border: none;
+	background-color: transparent;
+}
+
+.warning {
+	color: @warning;
+	background-color: @main-bg;
+}
+.critical {
+	color: @critical;
+	background-color: @main-bg;
+}
+.charging {
+	color: @charging;
+	background-color: @main-bg;
+}
+.muted {
+	color: @hover-fg;
+	background-color: @main-bg;
+}
+
+.modules-left {
+  margin-left: 8px;
+}
+
+.modules-right {
+  margin-right: 8px;
+}
+
+#custom-distro {
+	padding-right: 12px;
+	margin-right: 2px;
+	/* padding: 0 10px 0 5px; */
+	font-size: 18px;
+	min-width: 24px;
+	background-color: @accent;
+	color: @main-bg;
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#custom-distro,
+#workspaces,
+#cpu,
+#temperature,
+#clock,
+#network {
+	border: 1px solid @main-fg;
+	border-radius: 4px;
+}
+
+#tray-expander,
+#wireplumber.group,
+#power-plan,
+#power {
+	border: 1px solid @main-fg;
+	border-radius: 4px;
+	padding: 0 6px;
+	margin: 0 2px;
+}
+
+#custom-distro,
+#battery,
+#power-profiles-daemon,
+#backlight,
+#idle_inhibitor,
+#wireplumber.sink,
+#wireplumber.source,
+#custom-expand,
+#custom-shutdown,
+#custom-reboot,
+#custom-lock,
+#custom-logout,
+#custom-hibernate,
+#custom-suspend {
+	padding: 0 4px;
+}
+
+#custom-shutdown {
+	padding-right: 8px;
+}
+
+#custom-shutdown:hover {
+	color: @red;
+}
+#custom-reboot:hover {
+	color: @warning;
+}
+#custom-logout:hover {
+	color: @green;
+}
+#custom-hibernate:hover {
+	color: @blue;
+}
+
+#backlight {
+	font-size: 18px;
+	padding: 0 6px;
+}
+
+#idle_inhibitor {
+	padding-right: 8px;
+}
+
+#power-profiles-daemon {
+	padding-right: 6px;
+}
+
+#tray,
+#cpu,
+#temperature,
+#network,
+#clock,
+#bluetooth {
+	min-width: 12px;
+	margin: 0 2px;
+	padding: 0 6px;
+}
+
+.hidden {
+  opacity: 0;
+}

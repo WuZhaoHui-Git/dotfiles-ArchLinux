@@ -1,15 +1,14 @@
 {
-	"group/power": {
+	// 电源计划（电源、亮度、演示模式）组状态
+	"group/power-plan": {
 		// 设置组方向，可设置类型："horizontal"（水平方向）,"vertical"（垂直方向）,"inherit"（内联方向）, "orthogonal"（正交方向）
 		"orientation": "inherit",
 		// 模块组
 		"modules": [
-			"custom/shutdown",
-			// "custom/suspend",
-			// "custom/hibernate",
-			"custom/lock",
-			"custom/logout",
-			"custom/reboot",
+			"battery",
+			"idle_inhibitor",
+			"backlight",
+      "power-profiles-daemon"
 		],
 		// 抽屉设置，不配置模块组则不隐藏其他模块
 		"drawer": {
@@ -19,7 +18,7 @@
 			// 垂直方向时，true：从上到下，false：从下到上
 			"transition-left-to-right": false,
 			// 抽屉内元素class属性，不包含模块组第一个模块
-			"children-class": "drawer-power",
+			"children-class": "drawer-child",
 			// 允许通过点击显示隐藏的模块
 			"click-to-reveal": false
 		}

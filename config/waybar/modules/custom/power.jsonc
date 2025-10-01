@@ -4,38 +4,38 @@
 	"custom/shutdown": {
 		"format": "",
 		"on-click": "systemctl poweroff",
-		"min-length": 2,
+		// "min-length": 2,
 		"tooltip-format": " 关机"
 	},
 	"custom/reboot": {
 		"format": "",
 		"on-click": "systemctl reboot",
-		"min-length": 2,
+		// "min-length": 2,
 		"tooltip-format": " 重启"
 	},
 	"custom/lock": {
 		"format": "",
-		"on-click": "hyprlock",
-		// "on-click": "loginctl lock-session",
-		"min-length": 2,
+		// "on-click": "hyprlock",
+		"on-click": "loginctl lock-session",
+		// "min-length": 2,
 		"tooltip-format": " 锁屏"
 	},
 	"custom/logout": {
-		"format": "",
+		"format": "󰿅",
 		"on-click": "loginctl terminate-session '$XDG_SESSION_ID'",
-		"min-length": 2,
-		"tooltip-format": " 注销"
+		// "min-length": 2,
+		"tooltip-format": "󰿅 注销"
 	},
 	"custom/hibernate": {
-		"format": "󰒲",
+		"format": "",
 		"on-click": "systemctl hibernate",
-		"min-length": 2,
-		"tooltip-format": "󰒲 休眠"
+		// "min-length": 2,
+		"tooltip-format": " 休眠"
 	},
 	"custom/suspend": {
 		"format": "",
 		"on-click": "systemctl suspend",
-		"min-length": 2,
+		// "min-length": 2,
 		"tooltip-format": " 挂起"
 	},
 }

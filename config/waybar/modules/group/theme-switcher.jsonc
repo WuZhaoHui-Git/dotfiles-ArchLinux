@@ -22,7 +22,7 @@
 	},
 	"custom/theme-swicher": {
 		// 自定义模块需要执行的方法
-		"exec": "~/.config/waybar/scripts/theme-switcher.sh",
+		"exec": "",
 		// 执行方法前判断，用于是否执行exec内命令
 		// "exec-if": "",
 		// 模块事件如点击、滚动，触发exec命令
@@ -53,11 +53,11 @@
 		// 文本旋转度
 		// "rotate": 0,
 		// 鼠标左键点击
-		"on-click": "~/.config/waybar/scripts/theme-switcher.sh next",
+		// "on-click": "",
 		// 鼠标滚轮点击
 		// "on-click-middle": "",
 		// 鼠标右键点击
-		"on-click-right": "~/.config/waybar/scripts/theme-switcher.sh prev",
+		// "on-click-right": "",
 		// 鼠标滚轮向上滚动
 		// "on-scroll-up": "",
 		// 鼠标滚轮向下滚动

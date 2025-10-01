@@ -1,0 +1,24 @@
+{
+	// 输入输出组音量状态
+	"group/tray-expander": {
+		// 设置组方向，可设置类型："horizontal"（水平方向）,"vertical"（垂直方向）,"inherit"（内联方向）, "orthogonal"（正交方向）
+		"orientation": "inherit",
+		// 模块组
+		"modules": [
+			"custom/expand",
+			"tray"
+		],
+		// 抽屉设置，不配置模块组则不隐藏其他模块
+		"drawer": {
+			// 渲染动画使用时间，单位毫秒
+			"transition-duration": 500,
+			// 渲染顺序，true：从左到右，false：从右到左
+			// 垂直方向时，true：从上到下，false：从下到上
+			"transition-left-to-right": true,
+			// 抽屉内元素class属性，不包含模块组第一个模块
+			"children-class": "drawer-child",
+			// 允许通过点击显示隐藏的模块
+			"click-to-reveal": true
+		}
+	}
+}

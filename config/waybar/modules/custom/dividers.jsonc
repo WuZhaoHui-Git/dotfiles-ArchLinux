@@ -98,4 +98,8 @@
 		"format": "",
 		"tooltip": false
 	},
+	"custom/expand": {
+		"format": "",
+		"tooltip": false
+	},
 }
