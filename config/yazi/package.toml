@@ -1,12 +1,12 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:jump-to-char"
-rev = "d7588f6"
-hash = "d2f04875bbd4ed3dd5696e8c4b094fde"
+rev = "d1c8baa"
+hash = "ce67445ebb1bf3d97b8e44f50904b2c5"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "d7588f6"
-hash = "e1de3054c0d1a2d8dc6f007eadc0fa31"
+rev = "d1c8baa"
+hash = "435a2af56ecfb3d05755fd5e24977d8b"
 
 [[plugin.deps]]
 use = "MasouShizuka/projects"
