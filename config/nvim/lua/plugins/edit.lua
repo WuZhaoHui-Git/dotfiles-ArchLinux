@@ -7,12 +7,6 @@ return {
 			ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
 		},
 	},
-	-- 自动去除行尾多余空格
-	-- {
-	--   "https://gh-proxy.com/https://github.com/cappyzawa/trim.nvim",
-	--   event = "BufWritePre",
-	--   opts = {},
-	-- },
 	-- 文件修改历史
 	{
 		"https://gh-proxy.com/https://github.com/mbbill/undotree",

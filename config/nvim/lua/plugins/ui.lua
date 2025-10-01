@@ -227,7 +227,7 @@ return {
       { "<leader>?", function() require("which-key").show({ global = false }) end, desc = "[Which-key] Buffer Local Keymaps", },
 		},
 	},
-
+	-- git 编辑区状态信息
 	{
 		"https://gh-proxy.com/https://github.com/lewis6991/gitsigns.nvim",
 		event = "BufReadPost",
@@ -319,7 +319,7 @@ return {
 			require("scrollbar.handlers.gitsigns").setup()
 		end,
 	},
-
+	-- git 文本差异
 	{
 		"https://gh-proxy.com/https://github.com/echasnovski/mini.diff",
 		event = "BufReadPost",
@@ -365,7 +365,7 @@ return {
 			},
 		},
 	},
-
+	-- 搜索匹配内容增强
 	{
 		"https://gh-proxy.com/https://github.com/kevinhwang91/nvim-hlslens",
     -- stylua: ignore
@@ -391,14 +391,14 @@ return {
 			vim.api.nvim_set_hl(0, "HlSearchLensNear", { fg = "#CBA6F7" })
 		end,
 	},
-
+	-- 预览颜色
 	{
 		"https://gh-proxy.com/https://github.com/norcalli/nvim-colorizer.lua",
 		config = function(_, _)
 			require("colorizer").setup()
 		end,
 	},
-
+	-- 显示操作按键
 	{
 		"https://gh-proxy.com/https://github.com/nvzone/showkeys",
 		cmd = "ShowkeysToggle",
@@ -427,7 +427,7 @@ return {
 		event = "LspAttach",
 		opts = {},
 	},
-
+	-- 代码折叠
 	{
 		"https://gh-proxy.com/https://github.com/kevinhwang91/nvim-ufo",
 		dependencies = { "kevinhwang91/promise-async" },
@@ -548,7 +548,7 @@ return {
 			vim.keymap.set("n", "zX", "<NOP>", { desc = "Disabled" })
 		end,
 	},
-
+	-- yazi 文件浏览器弹窗
 	{
 		"https://gh-proxy.com/https://github.com/mikavilpas/yazi.nvim",
 		dependencies = { "folke/snacks.nvim" },
