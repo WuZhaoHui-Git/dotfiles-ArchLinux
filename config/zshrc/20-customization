@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # -----------------------------------------------------
 # CUSTOMIZATION
 # -----------------------------------------------------
@@ -43,5 +44,12 @@ setopt appendhistory
 
 # Shipped Theme
 # eval "$(oh-my-posh init zsh --config /usr/share/oh-my-posh/themes/iterm2.omp.json)"
-eval "$(starship init zsh)"
+if [[ -n $DISPLAY ]]; then
+	ln -snf ~/.config/starship/catppuccin-powerline.toml ~/.config/starship.toml
+else
+	ln -snf ~/.config/starship/bracketed-segments.toml ~/.config/starship.toml
+fi
 
+if command -v starship &> /dev/null; then
+	eval "$(starship init zsh)"
+fi

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+alias c='clear'
+alias ls='eza --icons=always'
+alias ll='eza --long --icons=always'
+alias lt='eza --tree --level=2 --icons=always'
+alias shutdown='systemctl poweroff'
+alias reboot='systemctl reboot'
+
+alias vi='nvim'
+alias vim='nvim'
