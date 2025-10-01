@@ -167,4 +167,4 @@ configuration {
   }
 }
 
-@theme "catppuccin-default"
+@theme "current"
