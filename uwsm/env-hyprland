@@ -1,8 +1,0 @@
-# ########### Themes ############
-export QT_QPA_PLATFORM=wayland
-export QT_QPA_PLATFORMTHEME=kde
-export XDG_MENU_PREFIX=plasma-
-export XCURSOR_THEME="Bibata-Modern-Amber"
-export XCURSOR_SIZE="40"
-export HYPRCURSOR_THEME="Bibata-Modern-Amber"
-export HYPRCURSOR_SIZE="40"

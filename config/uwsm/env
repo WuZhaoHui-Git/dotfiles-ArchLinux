@@ -1,0 +1,21 @@
+# ####### Input method ##########
+# export GTK_IM_MODULE=fcitx
+# export QT_IM_MODULE=fcitx
+# export XMODIFIERS="@im=fcitx"
+# export SDL_IM_MODULE=fcitx
+# export INPUT_METHOD=fcitx
+# export GLFW_IM_MODULE=ibus
+
+# ########### Wayland ###########
+# export ELECTRON_OZONE_PLATFORM_HINT=auto
+# export _JAVA_AWT_WM_NONREPARENTING=1
+
+# ####### Local language ########
+# export LANG="zh_CN.UTF-8"
+# export LC_CTYPE="zh_CN.UTF-8"
+
+# #### Default application ######
+# export EDITOR=nvim
+# export TERMINAL=kitty
+# export TERM=kitty
+
