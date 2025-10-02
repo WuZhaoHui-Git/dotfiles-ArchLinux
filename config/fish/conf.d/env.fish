@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 function add_path
-    if not contains --index "$argv" $fish_user_paths &>/dev/null
+    if not contains --index "$argv" $PATH &>/dev/null
         fish_add_path "$argv"
     else
         echo "The $argv exits in the path"
