@@ -31,7 +31,7 @@ configuration {
 /*	disable-history: false;*/
 /*	ignored-prefixes: "";*/
 /*	sort: false;*/
-/*	sorting-method: "normal";*/
+	sorting-method: "fzf";
 /*	case-sensitive: false;*/
 /*	case-smart: false;*/
 /*	cycle: true;*/
@@ -71,7 +71,7 @@ configuration {
 /*	display-window: ;*/
 /*	display-run: ;*/
 /*	display-ssh: ;*/
-/*	display-drun: ;*/
+	display-drun: "应用程序启动器";
 /*	display-combi: ;*/
 /*	display-keys: ;*/
 /*	display-filebrowser: ;*/
