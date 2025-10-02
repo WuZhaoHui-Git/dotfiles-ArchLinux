@@ -22,7 +22,7 @@ mkdir -p $HOME/.config
 for file in $script_dir/config/*; do
 	if [[ -d $file ]]; then
 		ln -snf $file $HOME/.config
-	elif [[ -f $file && $file == *flags.config ]]; then
+	elif [[ -f $file && $file == *flags.conf ]]; then
 		ln -nf $file $HOME/.config
 	fi
 done
