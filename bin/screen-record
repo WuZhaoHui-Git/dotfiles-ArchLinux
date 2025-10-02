@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+[[ -f ~/.config/user-dirs.dirs ]] && source ~/.config/user-dirs.dirs
+OUTPUT_DIR="${SCREENRECORD_DIR:-${XDG_VIDEOS_DIR:-$HOME/Videos}}"
+
+if [[ ! -d "$OUTPUT_DIR" ]]; then
+	notify-send "屏幕录制文件保存目录不存在: $OUTPUT_DIR" -u critical -t 3000
+	exit 1
+fi
+
+# Selects region or output
+SCOPE="$1"
+
+# Selects audio inclusion or not
+AUDIO=$([[ $2 == "audio" ]] && echo "--audio")
+
+start_screenrecording() {
+	filename="$OUTPUT_DIR/screen-recording-$(date +'%Y-%m-%d_%H-%M-%S').mp4"
+
+	wf-recorder $AUDIO -f "$filename" -c libx264 -p crf=23 -p preset=medium -p movflags=+faststart "$@" &
+
+	notify-send "屏幕录制已开始" -t 2000
+}
+
+stop_screenrecording() {
+	pkill -x wf-recorder
+
+	notify-send "屏幕录制文件已保存到目录：$OUTPUT_DIR" -t 2000
+}
+
+screenrecording_active() {
+	pgrep -x wf-recorder >/dev/null
+}
+
+if screenrecording_active; then
+	stop_screenrecording
+elif [[ "$SCOPE" == "output" ]]; then
+	start_screenrecording
+else
+	region=$(slurp) || exit 1
+	start_screenrecording -g "$region"
+fi

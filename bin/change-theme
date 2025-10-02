@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+THEMES_DIR="$HOME/.config/themes/"
+CURRENT_THEME_DIR="$HOME/.config/themes/current"
+
+THEME_NAME=$(echo "$1" | sed -E 's/<[^>]+>//g' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+CHANGED_THEME_DIR="$THEMES_DIR/$THEME_NAME"
+
+if [[ ! -d "$CHANGED_THEME_DIR" ]]; then
+	echo "Theme '$1' does not exist in $THEMES_DIR"
+	exit 1
+fi
+
+ln -snf "$CHANGED_THEME_DIR" "$CURRENT_THEME_DIR"
+
+restart-waybar
+restart-swayosd
+hyprctl reload
+pkill -SIGUSR2 btop
+makoctl reload

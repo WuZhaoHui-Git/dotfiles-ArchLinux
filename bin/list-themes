@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+THEMES_DIR="$HOME/.config/themes/"
+CURRENT_THEME_DIR="$HOME/.config/themes/current"
+
+for file in $(find $HOME/.config/themes/ -mindepth 1 -maxdepth 1 | grep -v current); do
+	echo "$(basename "$file" | sed -E 's/(^|-)([a-z])/\1\u\2/g; s/-/ /g')"
+done

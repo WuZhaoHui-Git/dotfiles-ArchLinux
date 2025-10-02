@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+hyprctl clients -j |
+	jq -r ".[].pid" |
+	xargs -I{} hyprctl dispatch killwindow pid:{}
+
+hyprctl dispatch workspace 1
