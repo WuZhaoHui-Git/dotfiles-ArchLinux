@@ -1,41 +1,35 @@
 // 请查看文档
 // https://github.com/Alexays/Waybar/wiki/Module:-Custom#config
 {
-	"custom/shutdown": {
-		"format": "",
-		"on-click": "systemctl poweroff",
-		// "min-length": 2,
-		"tooltip-format": " 关机"
-	},
-	"custom/reboot": {
-		"format": "",
-		"on-click": "systemctl reboot",
-		// "min-length": 2,
-		"tooltip-format": " 重启"
-	},
-	"custom/lock": {
-		"format": "",
-		// "on-click": "hyprlock",
-		"on-click": "loginctl lock-session",
-		// "min-length": 2,
-		"tooltip-format": " 锁屏"
-	},
-	"custom/logout": {
-		"format": "󰿅",
-		"on-click": "loginctl terminate-session '$XDG_SESSION_ID'",
-		// "min-length": 2,
-		"tooltip-format": "󰿅 注销"
-	},
-	"custom/hibernate": {
-		"format": "",
-		"on-click": "systemctl hibernate",
-		// "min-length": 2,
-		"tooltip-format": " 休眠"
-	},
-	"custom/suspend": {
-		"format": "",
-		"on-click": "systemctl suspend",
-		// "min-length": 2,
-		"tooltip-format": " 挂起"
-	},
+  "custom/shutdown": {
+    "format": "",
+    "on-click": "systemctl poweroff",
+    "tooltip-format": " 关机",
+  },
+  "custom/reboot": {
+    "format": "",
+    "on-click": "systemctl reboot",
+    "tooltip-format": " 重启",
+  },
+  "custom/lock": {
+    "format": "",
+    // "on-click": "hyprlock",
+    "on-click": "loginctl lock-session",
+    "tooltip-format": " 锁屏",
+  },
+  "custom/logout": {
+    "format": "󰿅",
+    "on-click": "loginctl terminate-session '$XDG_SESSION_ID'",
+    "tooltip-format": "󰿅 注销",
+  },
+  "custom/hibernate": {
+    "format": "",
+    "on-click": "systemctl hibernate",
+    "tooltip-format": " 休眠",
+  },
+  "custom/suspend": {
+    "format": "",
+    "on-click": "systemctl suspend",
+    "tooltip-format": " 挂起",
+  },
 }
