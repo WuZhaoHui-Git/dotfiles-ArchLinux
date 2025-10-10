@@ -1,26 +1,26 @@
-# fish ignore files
-fish/functions/*
-fish/completions/*
-fish/conf.d/nvm.fish
-fish/conf.d/sponge.fish
-fish/fish_variables
+# btop ignore files
+**/btop/themes
 
-# mako ignore files
-mako/themes/**
+# fish ignore files
+**/fish/functions
+**/fish/completions
+**/fish/conf.d/nvm.fish
+**/fish/conf.d/sponge.fish
+**/fish/fish_variables
 
 # nvim ignore files
-nvim/lazy-lock.json
+**/nvim/lua/plugins/theme.lua
+**/nvim/lazy-lock.json
 
-# wlogout ignore files
-wlogout/icons/**
-wlogout/themes/**
+# rofi ignore files
+**/rofi/themes
 
-# wofi ignore files
-wofi/themes/**
+# themes ignore files
+themes/*/background
 
 # yazi ignore files
-yazi/themes/**
-yazi/plugins/**
+**/yazi/theme.*
+**/yazi/plugins
 
 # kvantum ignore files
-Kvantum/*/
+**/Kvantum/*/
