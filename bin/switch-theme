@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-THEMES=($(list-themes))
 CURRENT_THEME="$(basename "$(realpath "$HOME/.config/themes/current")" | sed -E 's/(^|-)([a-z])/\1\u\2/g; s/-/ /g')"
 INDEX=$(echo -e "$(list-themes)" | grep -nxF "$CURRENT_THEME" | cut -d: -f1)
-CHANGE_THEME=$(list-themes | rofi -dmenu -p "主题颜色" -selected-row $(($INDEX - 1)))
+CHANGE_THEME=$(list-themes | rofi -dmenu -p "主题颜色" -selected-row $(("$INDEX" - 1)))
 if [[ ! -z "$CHANGE_THEME" ]]; then
 	change-theme "$CHANGE_THEME"
 fi

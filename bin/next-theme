@@ -3,18 +3,18 @@
 THEMES_DIR="$HOME/.config/themes/"
 CURRENT_THEME_DIR="$HOME/.config/themes/current"
 
-THEMES=($(find $HOME/.config/themes/ -mindepth 1 -maxdepth 1 | grep -v current))
+THEMES=($(find "$THEMES_DIR" -mindepth 1 -maxdepth 1 | grep -v current))
 TOTAL=${#THEMES[@]}
 
 if [[ -L $CURRENT_THEME_DIR ]]; then
 	TARGET_THEME_DIR=$(realpath "$CURRENT_THEME_DIR")
 else
-	TARGET_THEME_DIR=$(realpath "$THEMES[0]")
+	TARGET_THEME_DIR=$(realpath "${THEMES[0]}")
 fi
 
 INDEX=0
 for i in "${!THEMES[@]}"; do
-	THEMES[$i]=$(realpath "${THEMES[$i]}")
+	THEMES[i]=$(realpath "${THEMES[$i]}")
 
 	if [[ "${THEMES[$i]}" == "$TARGET_THEME_DIR" ]]; then
 		INDEX=$i
@@ -26,5 +26,5 @@ NEXT_INDEX=$(((INDEX + 1) % TOTAL))
 NEW_THEME=${THEMES[$NEXT_INDEX]}
 NEW_THEME_NAME=$(basename "$NEW_THEME")
 
-change-theme $NEW_THEME_NAME
+change-theme "$NEW_THEME_NAME"
 notify-send "主题已修改为$NEW_THEME_NAME" -t 2000

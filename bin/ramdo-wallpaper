@@ -11,5 +11,5 @@ WALLPAPER=$(find "$WALLPAPER_DIR" -type f ! -name "$(basename "$CURRENT_WALL")" 
 hyprctl hyprpaper reload "$FOCUSED_MONITOR","$WALLPAPER"
 
 BACKGROUD_DIR="$HOME/.config/themes/current/background"
-mkdir -p $BACKGROUD_DIR
-cp -p $WALLPAPER "$BACKGROUD_DIR/$FOCUSED_MONITOR"
+mkdir -p "$BACKGROUD_DIR"
+cp -p "$WALLPAPER" "$BACKGROUD_DIR/$FOCUSED_MONITOR"
