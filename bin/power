@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+case "$1" in
+poweroff)
+	systemctl poweroff
+	;;
+reboot)
+	systemctl reboot
+	;;
+lock)
+	loginctl lock-session "$XDG_SESSION_ID"
+	;;
+logout)
+	hyprctl dispatch exit || loginctl terminate-session "$XDG_SESSION_ID"
+	;;
+hibenate)
+	systemctl hibernate
+	;;
+suspend)
+	systemctl suspend
+	;;
+*) ;;
+esac

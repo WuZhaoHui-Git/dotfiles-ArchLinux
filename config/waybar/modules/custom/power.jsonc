@@ -3,33 +3,32 @@
 {
   "custom/shutdown": {
     "format": "",
-    "on-click": "systemctl poweroff",
+    "on-click": "power shutdown",
     "tooltip-format": " 关机",
   },
   "custom/reboot": {
     "format": "",
-    "on-click": "systemctl reboot",
+    "on-click": "power reboot",
     "tooltip-format": " 重启",
   },
   "custom/lock": {
     "format": "",
-    // "on-click": "hyprlock",
-    "on-click": "loginctl lock-session",
+    "on-click": "power lock",
     "tooltip-format": " 锁屏",
   },
   "custom/logout": {
     "format": "󰿅",
-    "on-click": "loginctl terminate-session '$XDG_SESSION_ID'",
+    "on-click": "power logout",
     "tooltip-format": "󰿅 注销",
   },
   "custom/hibernate": {
     "format": "",
-    "on-click": "systemctl hibernate",
+    "on-click": "power hibernate",
     "tooltip-format": " 休眠",
   },
   "custom/suspend": {
     "format": "",
-    "on-click": "systemctl suspend",
+    "on-click": "power suspend",
     "tooltip-format": " 挂起",
   },
 }
