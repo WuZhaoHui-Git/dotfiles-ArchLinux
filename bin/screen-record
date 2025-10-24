@@ -16,8 +16,9 @@ AUDIO=$([[ $2 == "audio" ]] && echo "--audio")
 
 start_screenrecording() {
 	filename="$OUTPUT_DIR/screen-recording-$(date +'%Y-%m-%d_%H-%M-%S').mp4"
+	output=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')
 
-	wf-recorder "$AUDIO" -f "$filename" -c libx264 -p crf=23 -p preset=medium -p movflags=+faststart "$@" &
+	wf-recorder "$AUDIO" -o "$output" -f "$filename" -c libx264 -p crf=23 -p preset=medium -p movflags=+faststart "$@" &
 
 	notify-send "屏幕录制已开始" -t 2000
 }
