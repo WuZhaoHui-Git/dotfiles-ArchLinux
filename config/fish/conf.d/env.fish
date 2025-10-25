@@ -17,3 +17,4 @@ end
 
 add_path $HOME/bin &>/dev/null
 add_path $HOME/.local/bin &>/dev/null
+add_path $HOME/.cargo/bin &>/dev/null
