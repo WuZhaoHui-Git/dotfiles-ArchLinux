@@ -9,6 +9,7 @@
 
 include=~/.config/themes/current/mako.conf
 default-timeout=5000
+max-history=20
 width=420
 height=110
 
@@ -18,5 +19,11 @@ invisible=true
 [mode=do-not-disturb app-name=notify-send]
 invisible=false
 
+# 不隐藏重要通知
 [urgency=critical]
 default-timeout=0
+
+# blueman 连接需要确认PIN码设备操作
+[app-name="blueman" actionable]
+on-button-left=invoke-action confirm
+on-button-right=invoke-action deny
