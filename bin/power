@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 case "$1" in
+shutdown)
+	systemctl poweroff
+	;;
 poweroff)
 	systemctl poweroff
 	;;
