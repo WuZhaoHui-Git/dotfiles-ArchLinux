@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+curl "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/direct-list.txt" -o direct-list.conf
+curl "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/apple-cn.txt" -o apple-cn.conf
+curl "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/google-cn.txt" -o google-cn.conf
+
+sed "s/^full://g;/^regexp:.*$/d;s/^/nameserver \//g;s/$/\/china/g" -i direct-list.conf
+sed "s/^full://g;/^regexp:.*$/d;s/^/nameserver \//g;s/$/\/china/g" -i apple-cn.conf
+sed "s/^full://g;/^regexp:.*$/d;s/^/nameserver \//g;s/$/\/china/g" -i google-cn.conf
+
+sudo mv direct-list.conf /etc/smartdns/
+sudo mv apple-cn.conf /etc/smartdns/
+sudo mv google-cn.conf /etc/smartdns/
+
+sudo rm -f /tmp/smartdns.cache
+sudo systemctl restart smartdns
