@@ -45,6 +45,9 @@ vim.keymap.set({ "n", "v" }, "x", '"_x', { desc = "Cut word and not paste exclud
 vim.keymap.set({ "n", "v" }, "X", '"_X', { desc = "Cut word and not paste exclude system clipboard" })
 -- 避免粘贴后yank内容被覆盖
 vim.keymap.set({ "v" }, "p", '"_dP', { desc = "Paste and not relace yank content" })
+-- 避免修改内容复制到系统剪贴板
+vim.keymap.set({ "v" }, "c", '"_c', { desc = "Paste and not relace yank content" })
+vim.keymap.set({ "v" }, "C", '"_C', { desc = "Paste and not relace yank content" })
 -- 添加空白行
 vim.keymap.set("n", "<A-p>", "<CMD>normal o<Esc>", { desc = "Add empty line below cursur" })
 vim.keymap.set("n", "<A-S-p>", "<CMD>normal O<Esc>", { desc = "Add empty line above cursur" })
