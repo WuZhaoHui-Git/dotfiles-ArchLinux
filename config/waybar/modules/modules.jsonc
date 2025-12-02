@@ -199,7 +199,7 @@
     // 轮询信息的时间间隔
     "interval": 60,
     // 格式化，时间信息
-    "format": "󰸗 {:%m月%d日 %H:%M}",
+    "format": "󰸗 {:%m-%d %H:%M}",
     // 时区
     // "timezone": "",
     // 多时区配置，与时区timezone冲突
@@ -501,23 +501,16 @@
     // "interface": "",
     // 轮询信息的时间间隔
     "interval": 3,
-    // "interval": 10,
     // 选择{ipaddr}显示的信息（可选选项"ipv4", "ipv6", "ipv4_6"）
     "family": "ipv4_6",
-    // 格式化，网络默认信息（如果其实特殊选项未配置默认用此）
-    "format": "󰤨",
     // 格式化。网络使用以太网接口信息
     "format-ethernet": "󰈀",
     // 格式化。网络使用无线网络接口信息
     "format-wifi": "{icon}",
-    // 格式化，没有 IP 地址的链接接口信息
-    // "format-linked": "",
     // 格式化，网络断开信息
     "format-disconnected": "󰖟",
     // 格式化，网络禁用信息
     "format-disabled": "󰇨",
-    // 格式化，点击后使用的替换信息
-    // "format-alt": "",
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     // 模块应显示的最小长度（以字符为单位）。
     // "min-length": 2,
@@ -543,9 +536,7 @@
     // 悬停时显示提示
     // "tooltip": false,
     // 悬停时显示提示的文本
-    "tooltip-format": "网关: {gwaddr}",
-    "tooltip-format-ethernet": "网络适配器: {ifname}",
-    "tooltip-format-wifi": "连接网络: {essid}\nIP地址: {ipaddr}/{cidr}\n信号强度: {signalStrength}%\n网络频率: {frequency} GHz\n上传速度: {bandwidthUpBytes} 下载速度: {bandwidthDownBytes}",
+    "tooltip-format": "IP地址: {ipaddr}\n信号强度: {signalStrength}%\n网络频率: {frequency} GHz\n上传速度: {bandwidthUpBytes} 下载速度: {bandwidthDownBytes}",
     "tooltip-format-disconnected": "Wi-Fi已断开",
     "tooltip-format-disabled": "Wi-Fi已禁用",
   },
@@ -558,11 +549,7 @@
     // 选择{ipaddr}显示的信息（可选选项"ipv4", "ipv6", "ipv4_6"）
     "family": "ipv4_6",
     // 格式化，网络默认信息（如果其实特殊选项未配置默认用此）
-    "format": " {bandwidthDownBytes}",
-    // 格式化。网络使用以太网接口信息
-    "format-ethernet": " {bandwidthDownBytes}",
-    // 格式化。网络使用无线网络接口信息
-    "format-wifi": " {bandwidthDownBytes}",
+    "format": " {bandwidthDownBytes}  {bandwidthUpBytes}",
     // 格式化，没有 IP 地址的链接接口信息
     // "format-linked": "",
     // 格式化，网络断开信息
@@ -596,9 +583,7 @@
     // 悬停时显示提示
     // "tooltip": false,
     // 悬停时显示提示的文本
-    "tooltip-format": "网关: {gwaddr}",
-    "tooltip-format-ethernet": "网络适配器: {ifname}",
-    "tooltip-format-wifi": "连接网络: {essid}\nIP地址: {ipaddr}/{cidr}\n信号强度: {signalStrength}%\n网络频率: {frequency} GHz\n上传速度: {bandwidthUpBytes} 下载速度: {bandwidthDownBytes}",
+    "tooltip-format": "IP地址: {ipaddr}信号强度: {signalStrength}%\n网络频率: {frequency} GHz\n上传速度: {bandwidthUpBytes} 下载速度: {bandwidthDownBytes}",
     "tooltip-format-disconnected": "Wi-Fi已断开",
     "tooltip-format-disabled": "Wi-Fi已禁用",
   },
