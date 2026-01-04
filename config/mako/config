@@ -27,3 +27,7 @@ default-timeout=0
 [app-name="blueman" actionable]
 on-button-left=invoke-action confirm
 on-button-right=invoke-action deny
+
+[app-name="Music Player Daemon" actionable]
+on-button-left=invoke-action next
+on-button-right=invoke-action play-pause
