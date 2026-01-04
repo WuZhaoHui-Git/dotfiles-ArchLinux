@@ -53,7 +53,7 @@ audio = [
 
 [open]
 rules = [
-  { name = "*/", use = [ "folder" ] },
+  { url = "*/", use = [ "folder" ] },
 
   { mime = "text/*", use = [ "text" ] },
   { mime = "image/*", use = [ "image" ] },
