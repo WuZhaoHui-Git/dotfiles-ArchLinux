@@ -14,6 +14,9 @@ else
 	ln -snf ~/.config/starship/bracketed-segments.toml ~/.config/starship.toml
 fi
 
+if command -v zoxide &>/dev/null; then
+	eval "$(zoxide init bash)"
+fi
 if command -v starship &>/dev/null; then
 	eval "$(starship init bash)"
 fi

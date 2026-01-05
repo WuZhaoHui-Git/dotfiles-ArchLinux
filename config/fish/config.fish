@@ -15,6 +15,13 @@ if status is-interactive # Commands to run in interactive sessions can go here
     else
         ln -snf ~/.config/starship/bracketed-segments.toml ~/.config/starship.toml
     end
+
+    # Directory history
+    # Use zoxide
+    if command -v zoxide &>/dev/null
+        zoxide init fish | source
+    end
+
     # Shipped theme
     # Use starship
     if command -v starship &>/dev/null
