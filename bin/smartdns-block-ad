@@ -6,5 +6,6 @@ else
 	sudo sed '$a\conf-file /etc/smartdns/anti-ad-smartdns.conf' -i /etc/smartdns/smartdns.conf
 fi
 
+sudo systemctl stop smartdns
 sudo rm -f /tmp/smartdns.cache
-sudo systemctl restart smartdns
+sudo systemctl start smartdns

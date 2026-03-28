@@ -12,5 +12,6 @@ sudo mv direct-list.conf /etc/smartdns/
 sudo mv apple-cn.conf /etc/smartdns/
 sudo mv google-cn.conf /etc/smartdns/
 
+sudo systemctl stop smartdns
 sudo rm -f /tmp/smartdns.cache
-sudo systemctl restart smartdns
+sudo systemctl start smartdns
