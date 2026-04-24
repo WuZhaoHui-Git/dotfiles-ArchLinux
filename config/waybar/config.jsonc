@@ -36,7 +36,7 @@
     // 模块内间距
     // "spacing": 2,
     // 设置class属性用于区分多实例
-    "name": "main",
+    // "name": "main",
     // 停靠模式（dock：停靠, hide 隐藏, invisible 不可见, overlay 覆盖）
     // 注意：除sway ipc之外，不可见、覆盖模式可能不兼容
     "mode": "dock",
@@ -74,20 +74,14 @@
       "~/.config/waybar/modules/group/tray-expander.jsonc",
       "~/.config/waybar/modules/group/wireplumber.jsonc",
     ],
-    "modules-left": [
-			"cpu",
-			"temperature",
-			"network#state"
-		],
-		"modules-center": [
-			"hyprland/workspaces"
-		],
-		"modules-right": [
-			"group/tray-expander",
-			"clock",
-			"group/wireplumber#group",
-			"group/power-plan",
-			"group/power"
-		],
+    "modules-left": ["cpu", "temperature", "network#state"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": [
+      "group/tray-expander",
+      "clock",
+      "group/wireplumber#group",
+      "group/power-plan",
+      "group/power",
+    ],
   },
 ]

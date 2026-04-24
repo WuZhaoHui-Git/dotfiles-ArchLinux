@@ -1,0 +1,78 @@
+/* right module */
+@define-color right0 @mantle;
+@define-color right1 @base;
+@define-color right2 @surface0;
+
+#clock {
+  border-radius: 4px;
+  padding: 0 6px;
+  margin: 0 2px;
+  background-color: @right2;
+}
+
+#tray-expander,
+#wireplumber,
+#power-plan,
+#power {
+  border-radius: 4px;
+  padding: 0 4px;
+  margin: 0 2px;
+  background-color: @right2;
+}
+
+#wireplumber .drawer-child {
+  padding: 0 4px;
+  margin: 0 2px;
+  background-color: @right2;
+}
+
+#power-plan > widget,
+#power-plan .drawer-child > label {
+  padding: 0 4px;
+  margin: 0 2px;
+  background-color: @right2;
+}
+
+#power > widget,
+#power-plan .drawer-child > label {
+  padding: 0 4px;
+  margin: 0 2px;
+  background-color: @right2;
+}
+
+#custom-expand,
+#tray-expander,
+#wireplumber,
+#battery,
+#idle_inhibitor,
+#backlight,
+#power-profiles-daemon,
+#custom-shutdown,
+#custom-suspend,
+#custom-logout,
+#custom-reboot,
+#custom-hibernate {
+  padding: 0 4px;
+  margin: 0 2px;
+}
+
+#custom-shutdown {
+  margin-right: 4px;
+}
+
+#custom-shutdown:hover,
+#custom-suspend:hover {
+  color: @red;
+}
+
+#custom-reboot:hover {
+  color: @warning;
+}
+
+#custom-logout:hover {
+  color: @green;
+}
+
+#custom-hibernate:hover {
+  color: @blue;
+}

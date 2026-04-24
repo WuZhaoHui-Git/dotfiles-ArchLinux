@@ -1,0 +1,24 @@
+/* left module */
+@define-color left0 @mantle;
+@define-color left1 @base;
+@define-color left2 @surface0;
+
+#cpu,
+#temperature,
+#network {
+  border-radius: 4px;
+  padding: 0 4px;
+  margin: 0 2px;
+}
+
+#cpu {
+  background-color: @left2;
+}
+
+#temperature {
+  background-color: @left2;
+}
+
+#network {
+  background-color: @left2;
+}

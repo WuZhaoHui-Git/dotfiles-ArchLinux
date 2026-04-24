@@ -1,0 +1,24 @@
+/* state colors */
+@define-color warning @yellow;
+@define-color critical @red;
+@define-color charging @green;
+
+.warning {
+  color: @warning;
+  background-color: @main-bg;
+}
+
+.critical {
+  color: @critical;
+  background-color: @main-bg;
+}
+
+.charging {
+  color: @charging;
+  background-color: @main-bg;
+}
+
+.muted {
+  color: @hover-fg;
+  background-color: @main-bg;
+}

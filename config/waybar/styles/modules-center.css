@@ -1,0 +1,15 @@
+/* center module */
+@define-color center0 @mantle;
+@define-color center1 @base;
+@define-color center2 @surface0;
+
+#workspaces {
+  border-radius: 4px;
+  padding: 0 2px;
+  background-color: @center2;
+}
+
+#workspaces button.active label,
+#workspaces button.focused label {
+  color: @accent;
+}
