@@ -16,7 +16,6 @@ border-radius=8
 padding=10
 border-size=2
 font=Noto Sans CJK SC 11
-max-icon-size=32
 outer-margin=20
 
 # 勿扰模式隐藏通知
