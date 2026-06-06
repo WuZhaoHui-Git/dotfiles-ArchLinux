@@ -7,6 +7,11 @@
 **/fish/conf.d/nvm.fish
 **/fish/conf.d/sponge.fish
 **/fish/fish_variables
+**/fish/conf.d/fish_frozen_key_bindings.fish
+**/fish/conf.d/fish_frozen_theme.fish
+
+# hyprland ignore files
+**/hypr/**/theme.lua
 
 # nvim ignore files
 **/nvim/lua/plugins/theme.lua
