@@ -1,5 +1,5 @@
 # see default setting https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/yazi-default.toml
-"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+#:schema https://yazi-rs.github.io/schemas/yazi.json
 
 [mgr]
 ratio = [1, 4, 3]
@@ -76,4 +76,9 @@ rules = [
   { mime = "application/x-mobipocket-ebook", use = [ "document", "reveal" ] },
 
   { mime = "*", use = [ "open", "reveal" ] },
+]
+
+[plugin]
+prepend_previewers = [
+  { mime = "*executable*", run = "exiftool" }
 ]

@@ -1,27 +1,32 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:jump-to-char"
-rev = "d1c8baa"
-hash = "ce67445ebb1bf3d97b8e44f50904b2c5"
+rev = "5d5c480"
+hash = "7a4b4237223aaa94e589d1c01a23542a"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "d1c8baa"
-hash = "435a2af56ecfb3d05755fd5e24977d8b"
+rev = "5d5c480"
+hash = "e3260d0b1feded8c8e3ae3afa1169e30"
 
 [[plugin.deps]]
 use = "MasouShizuka/projects"
-rev = "a5e33db"
-hash = "3de26efded35814ba3e55e28f1c389a4"
+rev = "198c2ba"
+hash = "5eeb4f0919ce6be5d941a9290c131d7d"
 
 [[plugin.deps]]
 use = "KKV9/compress"
-rev = "c264639"
-hash = "e17c11b605d989568a1d1741ca17c584"
+rev = "e60e122"
+hash = "fbaf0adc8efc59555b748d36aab62d40"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mime-ext"
-rev = "d1c8baa"
-hash = "4c49c446328c4553a4ccab7facc10b21"
+rev = "5d5c480"
+hash = "2678c84a0b3a0b22504e918ccaf99011"
+
+[[plugin.deps]]
+use = "AleMenon/exiftool"
+rev = "4c35573"
+hash = "44ef03e4d7151fa4094dd6b87a553033"
 
 [flavor]
 deps = []
