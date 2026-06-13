@@ -46,8 +46,7 @@ return {
     event = "VeryLazy",
     keys = {
       { "<A-/>", "<Cmd>normal gcc<CR><CR>", mode = "n", { desc = "Toggle comment line" } },
-      { "<A-/>", "<Esc><Esc><Cmd>normal gcc<CR>", mode = "i", { desc = "Toggle comment line" } },
-      { "<A-/>", "<Cmd>visual gc<CR>", mode = "v", { desc = "Toggle comment line" } },
+      { "<A-/>", "<Cmd>normal gc<CR>", mode = { "v", "x" }, { desc = "Toggle comment visual line" } },
     },
   },
   -- 多光标编辑
@@ -174,5 +173,8 @@ return {
         clipboard_register = "0",
       },
     },
+  },
+  {
+    "diegodox/fcitx5.nvim",
   },
 }
