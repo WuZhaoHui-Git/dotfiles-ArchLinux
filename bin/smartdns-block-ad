@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 if sudo cat /etc/smartdns/smartdns.conf | grep anti-ad-smartdns.conf >/dev/null; then
+	curl https://anti-ad.net/anti-ad-for-smartdns.conf -o anti-ad-smartdns.conf
+	sudo mv anti-ad-smartdns.conf /etc/smartdns/
 	sudo sed "/.*anti-ad-smartdns.conf$/d" -i /etc/smartdns/smartdns.conf
 else
 	sudo sed '$a\conf-file /etc/smartdns/anti-ad-smartdns.conf' -i /etc/smartdns/smartdns.conf
