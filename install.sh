@@ -39,6 +39,8 @@ done
 ln -snf "$HOME"/.config/themes/catppuccin-mocha "$HOME"/.config/themes/current
 
 # 特殊应用主题处理
+ln -snf "$HOME/.config/themes/current/hypr-theme.lua" "$HOME/.config/hypr/hyprland/theme.lua"
+
 mkdir -p "$HOME"/.config/btop/themes
 ln -snf "$HOME"/.config/themes/current/btop.theme "$HOME"/.config/btop/themes/current.theme
 
