@@ -13,8 +13,8 @@ fi
 
 ln -snf "$CHANGED_THEME_DIR" "$CURRENT_THEME_DIR"
 
-restart-waybar
-restart-swayosd
+hyprland-restart-waybar
+hyprland-restart-swayosd
 hyprctl reload
 pkill -SIGUSR2 btop
 makoctl reload

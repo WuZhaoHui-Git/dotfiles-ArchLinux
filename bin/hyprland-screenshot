@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+[[ -f ~/.config/user-dirs.dirs ]] && source "$HOME/.config/user-dirs.dirs"
+if [[ ! -z "$XDG_PICTURES_DIR" ]]; then
+	XDG_PICTURES_DIR="$XDG_PICTURES_DIR/Screenshots"
+fi
+OUTPUT_DIR="${SCREENSHOT_DIR:-${XDG_PICTURES_DIR:-$HOME/Pictures/Screenshots}}"
+
+# 检查文件存储路径
+if [[ ! -d "$OUTPUT_DIR" ]]; then
+	notify-send "屏幕捕获文件保存目录不存在: $OUTPUT_DIR" -u critical -t 3000
+	exit 1
+fi
+
+# 清理历史截图文件（保留30天）
+find "$OUTPUT_DIR" -type f -mtime +30 -exec rm {} +
+
+OUTPUT=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')
+REGION=$(hyprctl clients -j | jq -r ".[] | \"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])\"" | slurp)
+
+if [[ $2 == 'edit' ]]; then
+	FILE="$OUTPUT_DIR/Satty-$(date "+%y-%m-%d-%H:%M:%S").png"
+	if [[ $1 == 'output' ]]; then
+		grim -o "$OUTPUT" - | satty --output-filename "$FILE" --filename -
+	else
+		grim -g "$REGION" - | satty --output-filename "$FILE" --filename -
+	fi
+else
+	FILE="$OUTPUT_DIR/grim-$(date "+%Y-%m-%d-%H:%M:%S").png"
+	if [[ $1 == 'output' ]]; then
+		grim -o "$OUTPUT" "$FILE"
+	else
+		grim -g "$REGION" "$FILE"
+	fi
+	notify-send "屏幕捕获已保存" "保存路径：$FILE"
+fi

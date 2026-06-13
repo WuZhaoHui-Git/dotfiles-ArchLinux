@@ -1,0 +1,167 @@
+#!/usr/bin/env bash
+
+[[ -f ~/.config/user-dirs.dirs ]] && source "$HOME/.config/user-dirs.dirs"
+OUTPUT_DIR="${SCREENRECORD_DIR:-${XDG_VIDEOS_DIR:-$HOME/Videos}}"
+
+# 检查文件存储路径
+if [[ ! -d "$OUTPUT_DIR" ]]; then
+	notify-send "屏幕录制文件保存目录不存在: $OUTPUT_DIR" -u critical -t 3000
+	exit 1
+fi
+
+LOCK_FILE="/tmp/recording.lock"
+
+# 颜色和图标
+ICON_RECORD="🎥"
+ICON_STOP="⏹️"
+
+# 通知函数
+notify() {
+	notify-send -t 1000 "$1" "$2"
+}
+
+# 检查是否正在录制
+is_recording() {
+	pgrep -x "wf-recorder" >/dev/null 2>&1
+}
+
+# 停止录制
+stop_recording() {
+	if is_recording; then
+		# 查找所有 wf-recorder 进程
+		local pids
+
+		pids=$(pgrep -x "wf-recorder")
+		for pid in $pids; do
+			# 发送 SIGINT 信号
+			kill -SIGINT "$pid" 2>/dev/null
+		done
+
+		sleep 1
+
+		# 强制终止残留进程
+		pids=$(pgrep -x "wf-recorder")
+		if [[ -n "$pids" ]]; then
+			for pid in $pids; do
+				kill -9 "$pid" 2>/dev/null
+			done
+		fi
+
+		rm -f "$LOCK_FILE"
+		exit 0
+	else
+		notify "错误" "没有正在进行的录制"
+		exit 1
+	fi
+}
+
+# 获取录制音频设备
+get_audio() {
+	if [ "$1" == "source" ]; then
+		pactl get-default-source 2>/dev/null
+	else
+		echo "$(pactl get-default-sink).monitor" 2>/dev/null
+	fi
+}
+
+# 录制区域（带音频）
+area_recording() {
+	if is_recording; then
+		stop_recording
+	fi
+	local audio
+
+	echo "选择录制区域..."
+	AREA=$(hyprctl clients -j | jq -r ".[] | \"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])\"" | slurp)
+
+	if [[ -z "$AREA" ]]; then
+		return 1
+	fi
+
+	DATE=$(date +"%Y%m%d_%H%M%S")
+	OUTPUT_FILE="$OUTPUT_DIR/recording_${DATE}.mp4"
+
+	# 创建锁文件
+	touch "$LOCK_FILE"
+
+	notify "$ICON_RECORD 开始录制" "按快捷键停止录制\n输出: $OUTPUT_FILE"
+
+	audio=$(get_audio "$1")
+	if [[ -n "$audio" ]]; then
+		wf-recorder -g "$AREA" -f "$OUTPUT_FILE" --audio="$audio"
+	else
+		wf-recorder -g "$AREA" -f "$OUTPUT_FILE"
+	fi
+
+	rm -f "$LOCK_FILE"
+	notify "$ICON_STOP 录制完成" "文件位置:\n$OUTPUT_FILE"
+}
+
+# 录制屏幕（带音频）
+monitor_recording() {
+	if is_recording; then
+		stop_recording
+	fi
+	local audio
+
+	echo "选择录制屏幕..."
+	MONITOR=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true).name')
+
+	if [[ -z "$MONITOR" ]]; then
+		return 1
+	fi
+
+	DATE=$(date +"%Y%m%d_%H%M%S")
+	OUTPUT_FILE="$OUTPUT_DIR/recording_${DATE}.mp4"
+
+	# 创建锁文件
+	touch "$LOCK_FILE"
+
+	notify "$ICON_RECORD 开始录制" "按快捷键停止录制\n输出: $OUTPUT_FILE"
+
+	audio=$(get_audio "$1")
+	if [[ -n "$audio" ]]; then
+		wf-recorder -o "$MONITOR" -f "$OUTPUT_FILE" --audio="$audio"
+	else
+		wf-recorder -o "$MONITOR" -f "$OUTPUT_FILE"
+	fi
+
+	rm -f "$LOCK_FILE"
+	notify "$ICON_STOP 录制完成" "文件位置:\n$OUTPUT_FILE"
+}
+
+# 主菜单
+main() {
+	CHOICE=$(echo -e "区域录制\n屏幕录制\n全屏录制\n停止录制\n退出" |
+		fuzzel --dmenu --prompt="录屏工具 > " --lines=5)
+
+	case "$CHOICE" in
+	"区域录制")
+		area_recording
+		;;
+	"显屏录制")
+		monitor_recording
+		;;
+	"停止录制")
+		stop_recording
+		;;
+	*)
+		exit 0
+		;;
+	esac
+}
+
+case "$1" in
+"area")
+	area_recording "$2"
+	;;
+"monitor")
+	monitor_recording "$2"
+	;;
+"full")
+	fullscreen_recording "$2"
+	;;
+*)
+	main
+	;;
+esac

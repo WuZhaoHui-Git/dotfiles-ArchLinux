@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+THEMES_DIR="$HOME/.config/themes/"
+
+OPTIONS=()
+for file in $(find "$THEMES_DIR" -mindepth 1 -maxdepth 1 | grep -v current); do
+	OPTIONS+=("$(basename "$file" | sed -E 's/(^|-)([a-z])/\1\u\2/g; s/-/ /g')")
+done
+
+CHANGED_THEME=""
+if command -v fuzzel &>/dev/null; then
+	CHANGED_THEME=$(printf "%s\n" "${OPTIONS[@]}" | fuzzel --dmenu)
+elif command -v rofi &>/dev/null; then
+	CHANGED_THEME=$(printf "%s\n" "${OPTIONS[@]}" | rofi -dmemu -p "主题颜色")
+else
+	notify-send "Error" "Need to instal a menu tool (rofi|fuzzel)" --urgency=critical
+fi
+
+if [[ ! -z "$CHANGED_THEME" ]]; then
+	hyprland-theme-change "$CHANGED_THEME"
+fi
