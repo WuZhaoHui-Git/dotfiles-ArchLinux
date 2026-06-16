@@ -1,55 +1,83 @@
 # see default settings https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap-default.toml
+#:schema https://yazi-rs.github.io/schemas/keymap.json
+
 [mgr]
 prepend_keymap = [
-  { on = [ "!" ], run = 'shell "$SHELL" --block', desc = "Open shell here" },
-  { on = "<C-u>", run = "seek -5", desc = "Seek up 5 units in the preview" },
-  { on = "<C-d>", run = "seek 5", desc = "Seek down 5 units in the preview" },
-  { on = "K", run = "arrow -50%", desc = "Move cursor up half page" },
-  { on = "J", run = "arrow 50%", desc = "Move cursor down half page" },
-  { on = "<A-k>", run = "arrow -5", desc = "Move cursor up half page" },
-  { on = "<A-j>", run = "arrow 5", desc = "Move cursor down half page" },
-  { on = "S", run = "search --via=fd", desc = "Search files by name using fd" },
-  { on = [ "c", "y" ], run = 'shell -- for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list', desc = "Copy to clipboard" },
-  { on = "A", run = "create --dir", desc = "Create a dir" },
-  { on = [ "g", "C" ], run = "cd ~/.cache", desc = "Go ~/.cache" },
-  { on = [ "g", "D" ], run = "cd ~/Documents", desc = "Go ~/Documents" },
-  { on = [ "g", "l" ], run = "cd ~/.local", desc = "Go ~/.local" },
-  { on = [ "g", "r" ], run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"', desc = "Root of Git Repo" },
+  # 跳转到Sheel (see https://yazi-rs.github.io/docs/tips/#dropping-to-shell)
+  { on = "!", run = 'shell "$SHELL" --block', desc = "Open fish shell here", for = "linux" },
+  { on = "!", run = 'shell "powershell.exe" --block', desc = "Open powershell here", for = "windows" },
+
+  # 上下移动光标
+  { on = "<A-k>", run = "arrow -5", desc = "Move cursor up five lines" },
+  { on = "<A-j>", run = "arrow 5", desc = "Move cursor down five lines" },
+
+  # 导航
+  { on = "l", run = "plugin smart-enter", desc = "Enter the child or open the file" },
+
+  # 复制选择的文件到系统剪贴板
+  { on = [ "c", "y", ], run = 'shell -- for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list', desc = "Copy to clipboard", for = "linux" },
+
+  # 文件过滤
+  { on = "f", run = "plugin jump-to-char", desc = "Jump to File by char" },
+  { on = "F", run = "plugin smart-filter", desc = "Smart filter files" },
+
+  # 路径跳转
+  # 返回当前 Git 参考根节点 (see https://yazi-rs.github.io/docs/tips#cd-to-git-root)
+  { on = [ "g", "r", ], run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"', desc = "Root of Git Repo" },
+
+  { on = [ "g", "c", ], run = "cd ~/.config", desc = "Go config", for = "linux" },
+  { on = [ "g", "C", ], run = "cd ~/.cache", desc = "Go cache", for = "linux" },
+  { on = [ "g", "s", ], run = "cd ~/.local/share", desc = "Go data", for = "linux" },
+  { on = [ "g", "S", ], run = "cd ~/.local/state", desc = "Go state", for = "linux" },
+  { on = [ "g", "d", ], run = "cd ~/Downloads", desc = "Go downloads", for = "linux" },
+  { on = [ "g", "D", ], run = "cd ~/Documents", desc = "Go documents", for = "linux" },
+  { on = [ "g", "m", ], run = "cd ~/Music", desc = "Go music", for = "linux" },
+  { on = [ "g", "p", ], run = "cd ~/Pictures", desc = "Go picture", for = "linux" },
+  { on = [ "g", "v", ], run = "cd ~/Videos", desc = "Go video", for = "linux" },
+
+  { on = [ "g", "c", ], run = "cd ~/AppData/Roaming", desc = "Go AppData/Roaming", for = "windows" },
+  { on = [ "g", "l", ], run = "cd ~/AppData/Local", desc = "Go AppData/Local", for = "windows" },
+  { on = [ "g", "s", "s", ], run = "cd ~/scoop", desc = "Go scoop", for = "windows" },
+  { on = [ "g", "s", "a", ], run = "cd ~/scoop/apps", desc = "Go scoop apps", for = "windows" },
+  { on = [ "g", "s", "s", ], run = "cd ~/scoop/persist", desc = "Go scoop persist", for = "windows" },
+  { on = [ "g", "d", ], run = "cd ~/Downloads", desc = "Go downloads", for = "windows" },
+  { on = [ "g", "D", ], run = "cd ~/Documents", desc = "Go documents", for = "windows" },
+  { on = [ "g", "m", ], run = "cd ~/Music", desc = "Go music", for = "windows" },
+  { on = [ "g", "p", ], run = "cd ~/Pictures", desc = "Go picture", for = "windows" },
+  { on = [ "g", "v", ], run = "cd ~/Videos", desc = "Go video", for = "windows" },
+
+  # 标签页切换
   { on = "H", run = "tab_switch -1 --relative", desc = "Switch to the previous tab" },
   { on = "L", run = "tab_switch 1 --relative", desc = "Switch to the next tab" },
+
+  # 标签页交换位置
   { on = "<", run = "tab_swap -1", desc = "Swap current tab with previous tab" },
   { on = ">", run = "tab_swap 1", desc = "Swap current tab with next tab" },
-  # plugins keymap
-  # plugin mount.yazi
-  { on = "M", run = "plugin mount", desc = "mount" },
-  # plugin project.yazi
-  { on = [ "P", "s" ], run = "plugin projects save", desc = "Save current project" },
-  { on = [ "P", "l" ], run = "plugin projects load", desc = "Load project" },
-  { on = [ "P", "P" ], run = "plugin projects load_last", desc = "Load last project" },
-  { on = [ "P", "d" ], run = "plugin projects delete", desc = "Delete project" },
-  { on = [ "P", "D" ], run = "plugin projects delete_all", desc = "Delete all projects" },
-  { on = [ "P", "m" ], run = "plugin projects 'merge current'", desc = "Merge current tab to other projects" },
-  { on = [ "P", "M" ], run = "plugin projects 'merge all'", desc = "Merge current project to other projects" },
-  # plugin compress.yazi
-  { on = [ "C", "a", "a" ], run = "plugin compress", desc = "Archive selected files" },
-  { on = [ "C", "a", "p" ], run = "plugin compress -p", desc = "Archive selected files (password)" },
-  { on = [ "C", "a", "h" ], run = "plugin compress -ph", desc = "Archive selected files (password+header)" },
-  { on = [ "C", "a", "l" ], run = "plugin compress -l", desc = "Archive selected files (compression level)" },
-  { on = [ "C", "a", "u" ], run = "plugin compress -phl", desc = "Archive selected files (password+header+level)" },
 
+  # 插件快捷键
+  # 自动保存加载的标签页
+  { on = "q", run = "plugin autosession -- save-and-quit", desc = "Save seesion and quit" },
 ]
+
 append_keymap = [
-  { on = ["e",], run = "open", desc = "Open the selected files" },
-  { on = ["E",], run = "open --interactive", desc = "Open the selected files interactively" },
-]
+  # 插件快捷键
+  # 磁盘挂载、卸载、弹出 (see https://github.com/yazi-rs/plugins/tree/main/mount.yazi)
+  { on = "M", run = "plugin mount", desc = "mount" },
 
-[cmp]
-prepend_keymap = [
-  { on = "<C-k>", run = "arrow -1", desc = "Move cursor up" },
-  { on = "<C-j>", run = "arrow 1", desc = "Move cursor down" },
+  # 文件压缩 (see https://github.com/KKV9/compress.yazi)
+  { on = [ "C", "a", "a", ], run = "plugin compress", desc = "Archive selected files" },
+  { on = [ "C", "a", "p", ], run = "plugin compress -p", desc = "Archive selected files (password)" },
 ]
 
 [input]
-prepend_keymap = [
-	{ on = "<Esc>", run = "close", desc = "cancal input" },
+# 关闭输入框只需按一次`Esc`键 (see https://yazi-rs.github.io/docs/tips/#close-input-by-esc)
+prepend_keymap = [{ on = "<Esc>", run = "close", desc = "cancal input" }]
+
+[help]
+append_keymap = [
+  # 上下移动光标
+  { on = "<C-u>", run = "arrow -50%", desc = "Move cursor up half page" },
+  { on = "<C-d>", run = "arrow 50%", desc = "Move cursor donw half page" },
+  { on = "K", run = "arrow -5", desc = "Move cursor up five lines" },
+  { on = "J", run = "arrow 5", desc = "Move cursor down five lines" },
 ]

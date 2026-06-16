@@ -1,47 +1,16 @@
-require("projects"):setup({
-    save = {
-        method = "yazi", -- yazi | lua
-        yazi_load_event = "@projects-load", -- event name when loading projects in `yazi` method
-        -- lua_save_path = "", -- path of saved file in `lua` method, comment out or assign explicitly
-                            -- default value:
-                            -- windows: "%APPDATA%/yazi/state/projects.json"
-                            -- unix: "~/.local/state/yazi/projects.json"
-    },
-    last = {
-        update_after_save = true,
-        update_after_load = true,
-        load_after_start = false,
-    },
-    merge = {
-        event = "projects-merge",
-        quit_after_merge = false,
-    },
-    event = {
-        save = {
-            enable = true,
-            name = "project-saved",
-        },
-        load = {
-            enable = true,
-            name = "project-loaded",
-        },
-        delete = {
-            enable = true,
-            name = "project-deleted",
-        },
-        delete_all = {
-            enable = true,
-            name = "project-deleted-all",
-        },
-        merge = {
-            enable = true,
-            name = "project-merged",
-        },
-    },
-    notify = {
-        enable = true,
-        title = "Projects",
-        timeout = 3,
-        level = "info",
-    },
-})
+-- 显示 用户/用户组 在状态栏 (see https://yazi-rs.github.io/docs/tips#user-group-in-status)
+Status:children_add(function()
+	local h = cx.active.current.hovered
+	if not h or ya.target_family() ~= "unix" then
+		return ""
+	end
+
+	return ui.Line({
+		ui.Span(ya.user_name(h.cha.uid) or tostring(h.cha.uid)):fg("magenta"),
+		":",
+		ui.Span(ya.group_name(h.cha.gid) or tostring(h.cha.gid)):fg("magenta"),
+		" ",
+	})
+end, 500, Status.RIGHT)
+
+require("autosession"):setup()
